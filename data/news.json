@@ -1,0 +1,22 @@
+[
+    {
+        "version": "v0.0.1",
+        "fecha": "06/06/2026",
+        "autor": "Miguel Páramos",
+        "texto": {
+            "es": "Lanzamiento público de la primera versión completamente funcional del editor, y primer commit con código al repositorio Github de Yag2Dpg. Estos niveles podrán ser utilizados tal cual por el motor del juego. Se ha hecho una refactorización completa del código.",
+            "en": "Public release of the first fully functional version of the editor, and first code commit to the Yag2Dpg GitHub repository. These levels can be used as-is by the game engine. A complete code refactoring has been done.",
+            "fr": "Lancement public de la première version entièrement fonctionnelle de l'éditeur, et premier commit de code sur le dépôt GitHub de Yag2Dpg. Ces niveaux pourront être utilisés tels quels par le moteur du jeu. Une refonte complète du code a été effectuée."
+        }
+    },
+    {
+        "version": "v0.0.0",
+        "fecha": "24/05/2026",
+        "autor": "Miguel Páramos",
+        "texto": {
+            "es": "Inicialización del proyecto, a partir de un juego en p5.js que comencé a diseñar el día anterior para enseñar a los alumnos de la asignatura TICO de 1º de Bachillerato del IES Campanillas cómo es la programación de verdad. Como siempre me ocurre con este tipo de cosas, me empecé a venir arriba.",
+            "en": "Project initialization, starting from a p5.js game I began designing the day before to teach real programming to the 1st-year high school IT students at IES Campanillas. As always happens to me with these things, I got totally carried away.",
+            "fr": "Initialisation du projet, à partir d'un jeu en p5.js que j'ai commencé à concevoir la veille pour montrer ce qu'est la vraie programmation aux élèves de première en informatique de l'IES Campanillas. Comme d'habitude avec ce genre de choses, je me suis complètement emballé."
+        }
+    }
+]

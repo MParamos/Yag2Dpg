@@ -1,0 +1,35 @@
+# =========================
+# OS RELATED FILES
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# WEB AND CLI RELATED FILES
+# =========================
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn.lock
+package-lock.json
+
+tailwindcss.exe
+tailwindcss-windows-x64.exe
+tailwindcss-linux-x64
+tailwindcss-macos-x64
+tailwind/
+
+# =========================
+# IDE RELATED FILES
+# =========================
+.vscode/
+.idea/
+.qodo/
+*.suo
+*.swp
+*.swo
+.DS_Store
+tailwind.config.js
+styles/tailwind-input.css
+level-editor/styles/tailwind-input.css

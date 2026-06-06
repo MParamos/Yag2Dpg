@@ -1,0 +1,39 @@
+/**
+ * @file style.css
+ * @description Custom styles and animations for the Yag2Dpg landing page.
+ * Designed to work alongside the Tailwind CSS utility framework.
+ * @author Miguel Páramos
+ */
+
+/* ==========================================================================
+   BACKGROUND ANIMATIONS
+   ========================================================================== */
+
+/**
+ * @keyframes fluid-gradient
+ * @description Creates a continuous, smooth shifting effect for the background 
+ * gradients by rotating the background position across the four corners.
+ */
+@keyframes fluid-gradient {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/**
+ * .bg-wave-animated
+ * @description Applies a dark, multi-radial gradient background with a slow,
+ * infinite fluid animation. 
+ */
+.bg-wave-animated {
+    background-color: #020617; /* Base fallback color (Tailwind slate-950) */
+    background-image: 
+        radial-gradient(at 0% 0%, #1e293b 0px, transparent 65%),     /* Slate 800 - Visible blue-gray */
+        radial-gradient(at 100% 0%, #0c4a6e 0px, transparent 65%),   /* Sky 900 - Deep blue */
+        radial-gradient(at 100% 100%, #334155 0px, transparent 65%), /* Slate 700 - Metallic tint */
+        radial-gradient(at 0% 100%, #075985 0px, transparent 65%);   /* Sky 800 - Dark vibrant blue */
+    background-size: 200% 200%;
+    animation: fluid-gradient 20s ease-in-out infinite;
+}

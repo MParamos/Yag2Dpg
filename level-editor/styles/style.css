@@ -1,0 +1,110 @@
+/**
+ * @file style.css
+ * @description Core stylesheet for the Yag2Dpg Level Editor. Handles custom scrollbar 
+ * aesthetics, tool palette interactions, responsive tab navigation, and animated backgrounds.
+ * Designed to complement Tailwind CSS utility classes without relying on !important overrides.
+ * @author Miguel Páramos
+ */
+
+/* ========================================================
+   CUSTOM SCROLLBAR STYLES
+   (Native implementation since Tailwind lacks default scrollbar utilities)
+======================================================== */
+
+::-webkit-scrollbar { 
+    width: 8px; 
+}
+
+::-webkit-scrollbar-track { 
+    background: #0f172a; 
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb { 
+    background: #0ea5e9; 
+    border-radius: 4px; 
+}
+
+::-webkit-scrollbar-thumb:hover { 
+    background: #0284c7; 
+}
+
+/* ========================================================
+   HTML TOOLBAR STYLES
+======================================================== */
+
+/**
+ * Defines the layout and interactive states for individual color swatches
+ * within the color palette interface.
+ */
+.color-swatch {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.1s ease;
+}
+
+.color-swatch:hover {
+    transform: scale(1.15);
+}
+
+.color-swatch.active {
+    border-color: #ffffff;
+    box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+
+/* ========================================================
+   RESPONSIVE TAB LOGIC
+   (Manages layout shifts between mobile and desktop views)
+======================================================== */
+
+@media (min-width: 768px) {
+    .tab-content {
+        display: flex;
+    }
+    .mobile-tab-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .tab-content {
+        display: none;
+    }
+    .tab-content.active-tab {
+        display: flex;
+    }
+}
+
+/* ===================================================
+   BACKGROUND ANIMATION (Fluid Mesh)
+=================================================== */
+
+/**
+ * Keyframes for the continuous gradient movement to create a dynamic, 
+ * floating effect on the main background.
+ */
+@keyframes fluid-mesh {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+/**
+ * Applies a multi-layered radial gradient that animates over time.
+ * Uses slate and sky color palettes to maintain a coherent dark theme.
+ */
+.bg-wave-animated {
+    background-color: #020617; /* Base background (slate-950) */
+    background-image: 
+        radial-gradient(at 0% 0%, #1e293b 0px, transparent 65%),   /* Slate 800 - Visible blue-gray */
+        radial-gradient(at 100% 0%, #0c4a6e 0px, transparent 65%), /* Sky 900 - Deep blue */
+        radial-gradient(at 100% 100%, #334155 0px, transparent 65%), /* Slate 700 - Metallic touch */
+        radial-gradient(at 0% 100%, #075985 0px, transparent 65%); /* Sky 800 - Vibrant dark blue */
+    background-size: 200% 200%;
+    animation: fluid-mesh 20s ease-in-out infinite;
+}
