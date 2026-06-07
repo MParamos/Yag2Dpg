@@ -36,12 +36,20 @@
             <img src="assets/logos/Yag2Dpg-logo.png" alt="Yag2Dpg Logo" class="max-w-full h-auto drop-shadow-[0_0_25px_rgba(14,165,233,0.4)] mb-8 transition-transform hover:scale-105">
             
             <h1 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center tracking-tight" data-i18n="hero_title">¡Juego en Construcción!</h1>
-            <p class="text-slate-400 text-lg mb-10 text-center max-w-xl leading-relaxed" data-i18n="hero_subtitle">Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible el editor de niveles. ¡Puedes empezar a crear tus propios mundos y compartirlos con la comunidad!</p>
             
-            <!-- Link to Level Editor -->
-            <a id="btn-enlace-editor" href="level-editor/index.html" class="px-8 py-4 bg-sky-500 hover:bg-sky-400 text-white font-bold text-xl rounded-lg uppercase transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(14,165,233,0.4)] flex items-center gap-3">
-                <span class="text-2xl">🛠️</span> <span data-i18n="btn_editor">Editor de Niveles</span>
-            </a>
+            <p class="text-slate-400 text-lg mb-10 text-center max-w-xl leading-relaxed" data-i18n="hero_subtitle">Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible una primera alpha del juego muy básica, y una primera versión del editor de niveles. ¡Puedes empezar a crear tus propios mundos y compartirlos con la comunidad!</p>
+            
+            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-2xl px-4">
+                
+                <a id="btn-enlace-juego" href="game/index.html" class="w-full md:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl rounded-lg uppercase transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3">
+                    <span class="text-2xl">🎮</span> <span data-i18n="btn_play">Jugar a Yag2Dpg</span>
+                </a>
+
+                <a id="btn-enlace-editor" href="level-editor/index.html" class="w-full md:w-auto px-8 py-4 bg-sky-600 hover:bg-sky-500 text-white font-bold text-xl rounded-lg uppercase transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(14,165,233,0.4)] flex items-center justify-center gap-3">
+                    <span class="text-2xl">🛠️</span> <span data-i18n="btn_editor">Editor de Niveles</span>
+                </a>
+                
+            </div>
         </section>
 
         <!-- Sidebar: Project News Feed -->

@@ -61,4 +61,39 @@ window.addEventListener('DOMContentLoaded', () => {
     } else {
         applyLanguage('es'); 
     }
+
+
+    // 5. Footer Toggle Logic (Hide/Show via Tab)
+    const footerToggleBtn = document.getElementById('footer-toggle');
+    const footerContent = document.getElementById('footer-content');
+    const toggleIcon = document.getElementById('toggle-icon');
+    let isFooterVisible = true;
+
+    if (footerToggleBtn && footerContent && toggleIcon) {
+        footerToggleBtn.addEventListener('click', () => {
+            isFooterVisible = !isFooterVisible;
+            if (isFooterVisible) {
+                // Show footer, arrow down
+                footerContent.classList.remove('max-h-0', 'opacity-0');
+                footerContent.classList.add('max-h-[500px]', 'opacity-100');
+                toggleIcon.style.transform = 'rotate(0deg)';
+            } else {
+                // Hide footer, arrow up
+                footerContent.classList.add('max-h-0', 'opacity-0');
+                footerContent.classList.remove('max-h-[500px]', 'opacity-100');
+                toggleIcon.style.transform = 'rotate(180deg)';
+            }
+        });
+    }
+
+    // 6. Canvas Dynamic Resizing Observer
+    // Detects layout shifts (like the footer sliding) and smoothly updates q5play
+    const gameContainer = document.getElementById('game-container');
+    if (gameContainer && typeof windowResized === 'function') {
+        const resizeObserver = new ResizeObserver(() => {
+            windowResized(); // Force p5play to re-evaluate canvas dimensions
+        });
+        resizeObserver.observe(gameContainer);
+    }
+
 });

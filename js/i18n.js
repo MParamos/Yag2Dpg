@@ -27,7 +27,8 @@ export function setCurrentLanguage(lang) {
 const landingDictionary = {
     es: {
         hero_title: "¡Juego en Construcción!",
-        hero_subtitle: "Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible el editor de niveles. ¡Puedes empezar a crear tus propios mundos y compartirlos con la comunidad!",
+        hero_subtitle: "Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible una primera alpha del juego muy básica, y una primera versión del editor de niveles. ¡Puedes empezar a crear tus propios mundos y compartirlos con la comunidad!",
+        btn_play: "Jugar a Yag2Dpg",
         btn_editor: "Editor de Niveles",
         news_title: "Novedades del Proyecto",
         credits_title: "Miguel Páramos - Yet another generic 2D platformer game (Yag2Dpg)",
@@ -39,11 +40,12 @@ const landingDictionary = {
         credits_privacy: "Este sitio solo usa cookies esenciales, toda tu información se almacena de forma local, y no se almacena en mi servidor ni se transmite a terceros, ni se usa para fines comerciales en modo alguno.",
         credits_bug: "¿Has encontrado algún error? Por favor escríbeme a ",
         credits_bug2: " para que pueda arreglarlo.",
-        bug_subject: "Bug encontrado en Yag2Dpg"
+        bug_subject: "Bug encontrado en Yag2Dpg",
     },
     en: {
         hero_title: "Game Under Construction!",
-        hero_subtitle: "This project started in May 2026 as an exercise to teach programming to first-year high school IT students. Being as I am, the project has escalated and is turning into an actual video game. For now, only the level editor is available. You can start creating your own worlds and sharing them with the community!",
+        hero_subtitle: "This project started in May 2026 as a practical exercise to teach programming to first-year high school IT students. Being who I am, the project escalated and is turning into an actual video game. Currently, only a very basic first alpha of the game and an early version of the level editor are available. You can start creating your own worlds and sharing them with the community!",
+        btn_play: "Play Yag2Dpg",
         btn_editor: "Level Editor",
         news_title: "Project Updates",
         credits_title: "Miguel Páramos - Yet another generic 2D platformer game (Yag2Dpg)",
@@ -59,7 +61,8 @@ const landingDictionary = {
     },
     fr: {
         hero_title: "Jeu en Construction !",
-        hero_subtitle: "Ce projet a débuté en mai 2026 comme un exercice pour enseigner la programmation aux élèves de première en informatique. Puis, le projet a pris de l'ampleur et se transforme en un véritable jeu vidéo. Pour l'instant, l'éditeur de niveaux est la seule chose disponible. Vous pouvez commencer à créer vos propres mondes et les partager avec la communauté !",
+        hero_subtitle: "Ce projet a débuté en mai 2026 comme un exercice pratique pour enseigner la programmation aux élèves de première en informatique. Étant ce que je suis, le projet a pris de l'ampleur et se transforme en un véritable jeu vidéo. Pour le moment, seule une première version alpha très basique du jeu et une première version de l'éditeur de niveaux sont disponibles. Vous pouvez commencer à créer vos propres mondes et à les partager avec la communauté !",
+        btn_play: "Jouer à Yag2Dpg",
         btn_editor: "Éditeur de niveaux",
         news_title: "Mises à jour du Projet",
         credits_title: "Miguel Páramos - Yet another generic 2D platformer game (Yag2Dpg)",

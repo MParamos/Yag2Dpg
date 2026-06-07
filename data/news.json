@@ -1,5 +1,15 @@
 [
+    
     {
+        "version": "v0.0.12",
+        "fecha": "07/06/2026",
+        "autor": "Miguel Páramos",
+        "texto": {
+            "es": "Creación del primer prototipo alpha del juego, solo tiene el menú y la capacidad de cargar un nivel, recorriéndolo de salida a meta.",
+            "en": "Creation of the first alpha prototype of the game, it only has the menu and the ability to load a level, traversing it from start to finish.",
+            "fr": "Création du premier prototype alpha du jeu, ne comportant que le menu et la possibilité de charger un niveau et de le parcourir du début à la fin."
+        }
+    },{
         "version": "v0.0.1",
         "fecha": "06/06/2026",
         "autor": "Miguel Páramos",
