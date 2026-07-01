@@ -1,13 +1,13 @@
 [
     
     {
-        "version": "v0.0.12",
-        "fecha": "07/06/2026",
+        "version": "v0.0.2",
+        "fecha": "08/06/2026",
         "autor": "Miguel Páramos",
         "texto": {
-            "es": "Creación del primer prototipo alpha del juego, solo tiene el menú y la capacidad de cargar un nivel, recorriéndolo de salida a meta.",
-            "en": "Creation of the first alpha prototype of the game, it only has the menu and the ability to load a level, traversing it from start to finish.",
-            "fr": "Création du premier prototype alpha du jeu, ne comportant que le menu et la possibilité de charger un niveau et de le parcourir du début à la fin."
+            "es": "Refactorización del código, que deja de ser un prototipo en programación procedimental para convertirse en un proyecto orientado a objetos mucho más mantenible y escalable. Se ha añadido la posibilidad de cargar niveles desde el editor, y de recorrerlos de principio a fin. Y una pantalla de créditos.",
+            "en": "The code has been refactored, transforming it from a procedural programming prototype into a much more maintainable and scalable object-oriented project. The ability to load levels from the editor and navigate through them from beginning to end has been added, along with a credits screen.",
+            "fr": "Le code a été entièrement remanié, passant d'un prototype de programmation procédurale à un projet orienté objet beaucoup plus facile à maintenir et à faire évoluer. Il est désormais possible de charger les niveaux depuis l'éditeur et de les parcourir du début à la fin, et un écran de crédits a été ajouté."
         }
     },{
         "version": "v0.0.1",
