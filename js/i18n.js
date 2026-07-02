@@ -27,7 +27,7 @@ export function setCurrentLanguage(lang) {
 const landingDictionary = {
     es: {
         hero_title: "¡Juego en Construcción!",
-        hero_subtitle: "Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible una primera alpha del juego muy básica, y una primera versión del editor de niveles. ¡Puedes empezar a crear tus propios mundos y compartirlos con la comunidad!",
+        hero_subtitle: "Este proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real. De momento solo está disponible una primera alpha del juego muy básica, y una primera versión del editor de niveles. Para su siguiente versión, el proyecto se está migrando desde q5play a Phaser 4, para aprovechar la potencia de un mejor motor de juegos.",
         btn_play: "Jugar a Yag2Dpg",
         btn_editor: "Editor de Niveles",
         news_title: "Novedades del Proyecto",
@@ -44,7 +44,7 @@ const landingDictionary = {
     },
     en: {
         hero_title: "Game Under Construction!",
-        hero_subtitle: "This project started in May 2026 as a practical exercise to teach programming to first-year high school IT students. Being who I am, the project escalated and is turning into an actual video game. Currently, only a very basic first alpha of the game and an early version of the level editor are available. You can start creating your own worlds and sharing them with the community!",
+        hero_subtitle: "This project started in May 2026 as a practical exercise to teach programming to first-year high school IT students. Being who I am, the project escalated and is turning into an actual video game. Currently, only a very basic first alpha of the game and an early version of the level editor are available. For its next version, the project is migrating from q5play to Phaser 4, to take advantage of the power of a better game engine.",
         btn_play: "Play Yag2Dpg",
         btn_editor: "Level Editor",
         news_title: "Project Updates",
@@ -61,7 +61,7 @@ const landingDictionary = {
     },
     fr: {
         hero_title: "Jeu en Construction !",
-        hero_subtitle: "Ce projet a débuté en mai 2026 comme un exercice pratique pour enseigner la programmation aux élèves de première en informatique. Étant ce que je suis, le projet a pris de l'ampleur et se transforme en un véritable jeu vidéo. Pour le moment, seule une première version alpha très basique du jeu et une première version de l'éditeur de niveaux sont disponibles. Vous pouvez commencer à créer vos propres mondes et à les partager avec la communauté !",
+        hero_subtitle: "Ce projet a débuté en mai 2026 comme un exercice pratique pour enseigner la programmation aux élèves de première en informatique. Étant ce que je suis, le projet a pris de l'ampleur et se transforme en un véritable jeu vidéo. Pour le moment, seule une première version alpha très basique du jeu et une première version de l'éditeur de niveaux sont disponibles. Pour sa prochaine version, le projet migre de q5play vers Phaser 4, afin de tirer parti de la puissance d'un meilleur moteur de jeu.",
         btn_play: "Jouer à Yag2Dpg",
         btn_editor: "Éditeur de niveaux",
         news_title: "Mises à jour du Projet",

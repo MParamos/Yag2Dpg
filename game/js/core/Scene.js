@@ -18,7 +18,7 @@ class Scene {
         this.#name = name;
         this.#musicPath = musicPath;
         this.#backgroundMusic = null;
-        this.#domElements = []; 
+        this.#domElements = [];
     }
 
     /**
@@ -49,9 +49,9 @@ class Scene {
         }
     }
 
-    setup() {}
-    draw() {}
-    windowResized() {}
+    setup() { }
+    draw() { }
+    windowResized() { }
 
     /**
      * Safely initiates the background music.
@@ -64,7 +64,6 @@ class Scene {
                     this.#backgroundMusic.loop();
                 }
             } else {
-                // Si el MP3 no ha cargado, esperamos pacientemente sin romper la promesa
                 let checkInterval = setInterval(() => {
                     if (this.#backgroundMusic && this.#backgroundMusic.isLoaded()) {
                         clearInterval(checkInterval);

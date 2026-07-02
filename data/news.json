@@ -1,15 +1,25 @@
 [
-    
     {
-        "version": "v0.0.2",
+        "version": "v0.0.13",
+        "fecha": "02/07/2026",
+        "autor": "Miguel Páramos",
+        "texto": {
+            "es": "Se ha añadido la posibilidad de cargar niveles desde el editor, y de recorrerlos de principio a fin, sin poder salir ni morir, mejorados los menús. Y una pantalla de créditos.",
+            "en": "It has added the possibility of loading levels from the editor, and to re-correspond to the principle at the end, without being able to get dirty or die, improved the menus. There is now a credits scene.",
+            "fr": "La possibilité de charger des niveaux depuis l'éditeur et de les jouer du début à la fin sans pouvoir quitter ni mourir a été ajoutée, ainsi que des menus améliorés et un écran de crédits a été ajoutée."
+        }
+    },
+    {
+        "version": "v0.0.12",
         "fecha": "08/06/2026",
         "autor": "Miguel Páramos",
         "texto": {
-            "es": "Refactorización del código, que deja de ser un prototipo en programación procedimental para convertirse en un proyecto orientado a objetos mucho más mantenible y escalable. Se ha añadido la posibilidad de cargar niveles desde el editor, y de recorrerlos de principio a fin. Y una pantalla de créditos.",
-            "en": "The code has been refactored, transforming it from a procedural programming prototype into a much more maintainable and scalable object-oriented project. The ability to load levels from the editor and navigate through them from beginning to end has been added, along with a credits screen.",
-            "fr": "Le code a été entièrement remanié, passant d'un prototype de programmation procédurale à un projet orienté objet beaucoup plus facile à maintenir et à faire évoluer. Il est désormais possible de charger les niveaux depuis l'éditeur et de les parcourir du début à la fin, et un écran de crédits a été ajouté."
+            "es": "Refactorización del código, que deja de ser un prototipo en programación procedimental para convertirse en un proyecto orientado a objetos mucho más mantenible y escalable.",
+            "en": "The code has been refactored, transforming it from a procedural programming prototype into a much more maintainable and scalable object-oriented project.",
+            "fr": "Le code a été entièrement remanié, passant d'un prototype de programmation procédurale à un projet orienté objet beaucoup plus facile à maintenir et à faire évoluer."
         }
-    },{
+    },
+    {
         "version": "v0.0.1",
         "fecha": "06/06/2026",
         "autor": "Miguel Páramos",
