@@ -1,6 +1,6 @@
 /**
  * @file ui.js
- * @description User Interface logic and DOM event bindings for the Yag2Dpg Level Editor.
+ * @description User Interface logic and DOM event bindings for the Yagce Level Editor.
  * Manages state updates reflecting on the UI, tool selection, layer switching, 
  * and dynamic configuration panels.
  * @author Miguel Páramos

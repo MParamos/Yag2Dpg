@@ -1,6 +1,6 @@
 /**
  * @file i18n.js
- * @description Internationalization (i18n) system for the Yag2Dpg Level Editor.
+ * @description Internationalization (i18n) system for the YAGCE Level Editor.
  * Contains the dictionary mapping for supported languages and functions to 
  * retrieve and update UI text dynamically.
  * @author Miguel Páramos
@@ -37,7 +37,7 @@ export const dictionary = {
     ui_paleta: "PALETA DE COLORES", ui_relleno: "Establecer color actual como fondo",
     ui_deshacer: "DESHACER", ui_rehacer: "REHACER", ui_reset: "RESETEAR MAPA",
     ui_descartar: "DESCARTAR NIVEL", ui_guardar: "GUARDAR ZIP",
-    form_title: "🛠️ Editor de niveles para Yag2Dpg",
+    form_title: "🛠️ Editor de niveles para YAGCE",
     form_subtitle: "Configura los metadatos y dimensiones de tu mundo",
     lbl_author: "Autor del nivel:",
     lbl_url: "URL del autor:",
@@ -80,7 +80,7 @@ export const dictionary = {
     ph_music_title: "Nombre del tema o pista de audio",
     ph_author_music: "Nombre del compositor o artista",
     ph_url_music: "Enlace original (SoundCloud, Bandcamp, etc.)",
-    credits_title: "Miguel Páramos - Editor de niveles para <abbr title='Yet Another Generic 2D Platformer Game' style='text-decoration: underline dotted; cursor: help;'>Yag2Dpg</abbr>",
+    credits_title: "Miguel Páramos - Editor de niveles para <abbr title='YAGCE (Yet Another Game Creation Engine)' style='text-decoration: underline dotted; cursor: help;'>YAGCE</abbr>",
     credits_license1: "Distribuido bajo licencia",
     credits_license2: "Por favor, dar atribución con enlace a",
     credits_license3: "Creado con",
@@ -98,7 +98,7 @@ export const dictionary = {
     credits_source: "Descarga el código fuente aquí",
     credits_bug: "¿Has encontrado algún error? Por favor escríbeme a ",
     credits_bug2: " para que pueda arreglarlo.",
-    bug_subject: "Bug encontrado en el editor de niveles de Yag2Dpg",
+    bug_subject: "Bug encontrado en el editor de niveles de YAGCE",
   },
   en: {
     tab_archivo: "File", tab_herramientas: "Tools", tab_capas: "Layer", tab_colores: "Color",
@@ -128,7 +128,7 @@ export const dictionary = {
     ui_paleta: "COLOR PALETTE", ui_relleno: "Set current color as background",
     ui_deshacer: "UNDO", ui_rehacer: "REDO", ui_reset: "RESET MAP",
     ui_descartar: "DISCARD LEVEL", ui_guardar: "SAVE ZIP",
-    form_title: "🛠️ Yag2Dpg Level Editor",
+    form_title: "🛠️ YAGCE Level Editor",
     form_subtitle: "Configure your world's metadata and dimensions",
     lbl_author: "Level author:",
     lbl_url: "Author URL:",
@@ -171,7 +171,7 @@ export const dictionary = {
     ph_music_title: "Track or audio name",
     ph_author_music: "Composer or artist's name",
     ph_url_music: "Original link (SoundCloud, Bandcamp, etc.)",
-    credits_title: "Miguel Páramos - Level Editor for <abbr title='Yet Another Generic 2D Platformer Game' style='text-decoration: underline dotted; cursor: help;'>Yag2Dpg</abbr>",
+    credits_title: "Miguel Páramos - Level Editor for <abbr title='YAGCE (Yet Another Game Creation Engine)' style='text-decoration: underline dotted; cursor: help;'>YAGCE</abbr>",
     credits_license1: "Distributed under",
     credits_license2: "Please provide attribution with a link to",
     credits_license3: "Created with",
@@ -189,7 +189,7 @@ export const dictionary = {
     credits_source: "Download the source code here",
     credits_bug: "Found a bug? Please write to me at ",
     credits_bug2: " so I can fix it.",
-    bug_subject: "Bug found in the Yag2Dpg level editor",
+    bug_subject: "Bug found in the YAGCE level editor",
   },
   fr: {
     tab_archivo: "Fichier", tab_herramientas: "Outils", tab_capas: "Calque", tab_colores: "Couleur",
@@ -219,7 +219,7 @@ export const dictionary = {
     ui_paleta: "PALETTE DE COULEURS", ui_relleno: "Définir la couleur comme fond",
     ui_deshacer: "ANNULER", ui_rehacer: "REFAIRE", ui_reset: "RÉINITIALISER",
     ui_descartar: "ABANDONNER", ui_guardar: "SAUVER LE ZIP",
-    form_title: "🛠️ Éditeur de niveaux pour Yag2Dpg",
+    form_title: "🛠️ Éditeur de niveaux pour YAGCE",
     form_subtitle: "Configurez les métadonnées et dimensions de votre monde",
     lbl_author: "Auteur du niveau:",
     lbl_url: "URL de l'auteur:",
@@ -262,7 +262,7 @@ export const dictionary = {
     ph_music_title: "Nom de la piste ou de l'audio",
     ph_author_music: "Nom du compositeur ou de l'artiste",
     ph_url_music: "Lien original (SoundCloud, Bandcamp, etc.)",
-    credits_title: "Miguel Páramos - Éditeur de niveaux pour <abbr title='Yet Another Generic 2D Platformer Game' style='text-decoration: underline dotted; cursor: help;'>Yag2Dpg</abbr>",
+    credits_title: "Miguel Páramos - Éditeur de niveaux pour <abbr title='YAGCE (Yet Another Game Creation Engine)' style='text-decoration: underline dotted; cursor: help;'>YAGCE</abbr>",
     credits_license1: "Distribué sous licence",
     credits_license2: "Veuillez attribuer avec un lien vers",
     credits_license3: "Créé avec",
@@ -280,7 +280,7 @@ export const dictionary = {
     credits_source: "Téléchargez le code source ici",
     credits_bug: "Vous avez trouvé un bug ? Veuillez m'écrire à ",
     credits_bug2: " pour que je puisse le corriger.",
-    bug_subject: "Bug trouvé dans l'éditeur de niveaux Yag2Dpg",
+    bug_subject: "Bug trouvé dans l'éditeur de niveaux YAGCE",
   }
 };
 

@@ -1,6 +1,6 @@
 /**
  * @file app.js
- * @description Main application logic for the Yag2Dpg landing page.
+ * @description Main application logic for the Yagce landing page.
  * Handles news fetching, safe rendering, and dynamic language switching.
  * @author Miguel Páramos
  */
@@ -102,10 +102,14 @@ function applyLanguage(lang) {
         mailLink.href = `mailto:hola@mparamos.com?subject=${encodeURIComponent(getTranslation('bug_subject'))}`;
     }
 
-    // 4. Append language parameter to the level editor link
+    // 4. Append language parameter to the level editor and game-tester links
     const btnEditor = document.getElementById('btn-enlace-editor');
     if (btnEditor) {
         btnEditor.href = `level-editor/index.html?lang=${lang}`;
+    }
+    const btnJuego = document.getElementById('btn-enlace-juego');
+    if (btnJuego) {
+        btnJuego.href = `game-tester/index.html?lang=${lang}`;
     }
 
     // 5. Translate static DOM elements dynamically

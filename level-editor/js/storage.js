@@ -1,6 +1,6 @@
 /**
  * @file storage.js
- * @description Export and file management system for the Yag2Dpg Level Editor.
+ * @description Export and file management system for the Yagce Level Editor.
  * Handles the packaging of level data, including metadata, map arrays, and assets 
  * (images, music) into a downloadable ZIP file.
  * @author Miguel Páramos
@@ -61,7 +61,7 @@ export async function executeSave() {
     rootFolder.file("map.js", exportMap);
 
     // Generate LICENSE.txt content
-    let exportLicense = `Map for the Yag2Dpg game, created with the level editor at https://www.mparamos.com/games/Yag2Dpg/editor\n\n`;
+    let exportLicense = `Map for the Yagce game, created with the level editor at https://www.mparamos.com/games/Yagce/editor\n\n`;
     exportLicense += `mapVersion = 0.0.1\n`;
     exportLicense += `-- Level Data --\n`;
     exportLicense += `Author: ${state.levelData.author}\n`;

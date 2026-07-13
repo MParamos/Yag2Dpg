@@ -1,6 +1,6 @@
 /**
  * @file config.js
- * @description Global configuration and state management module for the Yag2Dpg Level Editor.
+ * @description Global configuration and state management module for the Yagce Level Editor.
  * Centralizes the application state, constants, and color palette definitions to ensure
  * consistent data flow across all modules.
  * @author Miguel Páramos

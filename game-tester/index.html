@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAGCE (Yet Another Game Creation Engine)</title>
+
+    <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./styles/tailwind-output.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://www.mparamos.com/mr/css/styles.css">
+    <script src="js/libraries/jszip.min.js"></script>
+    <script src="js/libraries/phaser.min.js"></script>
+    <script src="js/libraries/rexuiplugin.min.js"></script>
+
+    <script src="js/I18n/i18n.js"></script>
+
+    <script src="js/ui/WebInterface/WebController.js"></script>
+    <script src="js/core/ConfigManager.js"></script>
+    <script src="js/core/BaseScene.js"></script>
+    <script src="js/core/MenuScene.js"></script>
+    <script src="js/ui/GameInterface/SettingsMenu.js"></script>
+    <script src="js/ui/GameInterface/MenuButton.js"></script>
+    <script src="js/ui/GameInterface/ConfirmationModalDialog.js"></script>
+
+
+    <script src="js/entities/Block.js"></script>
+    <script src="js/entities/Player.js"></script>
+    <script src="js/core/LevelData.js"></script>
+
+    <script src="js/scenes/GameLevelScene.js"></script>
+    <script src="js/scenes/MainMenuScene.js"></script>
+    <script src="js/scenes/CreditsScene.js"></script>
+    <script src="js/game.js"></script>
+</head>
+
+<body class="relative h-[100dvh] w-full m-0 p-0 overflow-hidden bg-slate-900">
+
+    <main id="game-container"
+        class="absolute inset-0 w-full h-full overflow-hidden bg-[#0f172a] shadow-[inset_0_0_50px_rgba(0,0,0,0.8)]">
+    </main>
+
+
+    <footer id="app-footer"
+        class="absolute bottom-0 left-0 right-0 w-full z-20 bg-slate-950 shadow-[0_-5px_20px_rgba(0,0,0,0.6)] flex flex-col justify-end">
+
+
+
+        <div id="footer-content"
+            class="transition-[max-height,opacity] duration-500 ease-in-out max-h-[500px] opacity-100 overflow-hidden">
+            <div class="p-2 sm:px-6">
+                <div class="flex flex-col xl:flex-row justify-between items-center gap-3 w-full">
+                    <div class=" flex flex-wrap justify-center xl:justify-start items-center gap-2 sm:gap-3 shrink-0">
+                        <a href="https://mparamos.com" target="_self" class="shrink-0">
+                            <img src="https://www.mparamos.com/img/mparamos%20logo%20vectorial.svg"
+                                alt="Logo Miguel Páramos" class="h-4 sm:h-6 w-auto">
+                        </a>
+                        <div class="text-white font-bold text-center text-[0.9rem] sm:text-sm"
+                            data-i18n="credits_title">Miguel Páramos - YAGCE (Yet Another Game Creation Engine)
+                        </div>
+
+                        <div class="flex gap-2 items-center shrink-0" id="langSelector">
+                            <button class="flag-btn flag-es active" data-lang="es" title="Español"></button>
+                            <button class="flag-btn flag-en" data-lang="en" title="English / USA"></button>
+                            <button class="flag-btn flag-fr" data-lang="fr" title="Français"></button>
+                        </div>
+                        
+                        <button onclick="
+                            let contents = document.querySelectorAll('.footer-accordion-content');
+                            let isClosed = contents[0].classList.contains('max-h-0');
+                            contents.forEach(el => {
+                                if(isClosed) {
+                                    el.classList.remove('max-h-0');
+                                    el.classList.add('max-h-[500px]', 'mt-2', 'pt-2');
+                                } else {
+                                    el.classList.add('max-h-0');
+                                    el.classList.remove('max-h-[500px]', 'mt-2', 'pt-2');
+                                }
+                            });
+                            this.innerHTML = isClosed ? '<span class=\'text-[10px]\'>▼</span>' : '<span class=\'text-[10px]\'>▲</span>';
+                        " class="xl:hidden ml-1 px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs border border-slate-700 hover:bg-slate-700 focus:outline-none outline-none transition-colors flex items-center justify-center">
+                            <span class="text-[10px]">▲</span>
+                        </button>
+                    </div>
+
+                    <div
+                        class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full xl:w-auto text-slate-400 text-[0.6rem] sm:text-xs text-center xl:text-right xl:flex-1">
+                        © <span id="currentYear"></span> Miguel Páramos. <span data-i18n="credits_license1">Distribuido
+                            bajo licencia</span> <a href="https://www.gnu.org/licenses/gpl-3.0.html"
+                            rel="noopener noreferrer" target="_blank">GNU GPL v3</a>. <span
+                            data-i18n="credits_license2">Por favor, dar atribución con enlace a</span> <a
+                            href="https://mparamos.com" class="text-sky-400 hover:underline" rel="noopener noreferrer"
+                            target="_blank">mparamos.com</a>.<br>
+                        <span data-i18n="credits_license3">Creado con</span> <a href="https://phaser.io/"
+                            class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">Phaser</a>
+                        (MIT), <a href="https://stuk.github.io/jszip/" class="text-sky-400 hover:underline"
+                            rel="noopener noreferrer" target="_blank">JSZip</a> (MIT), <a href="https://phaser.io/news/2019/01/rexui-plugins" class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">RexUI</a> (MIT)<span data-i18n="credits_and"> y
+                        </span><a href="https://tailwindcss.com/" class="text-sky-400 hover:underline"
+                            rel="noopener noreferrer" target="_blank">Tailwind</a> (MIT).
+                        <a href="https://github.com/MParamos/Yagce" rel="noopener noreferrer" target="_blank"
+                            class="text-emerald-400 hover:text-emerald-300 hover:underline font-bold transition-colors mt-1 inline-block"
+                            data-i18n="credits_source">Descarga el código fuente aquí</a>.
+                    </div>
+                </div>
+
+                <div
+                    class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full text-[0.65rem] text-slate-500 text-center leading-tight">
+                    <span data-i18n="credits_privacy">Este juego solo usa cookies esenciales, toda tu información se
+                        almacena de forma local, y no se almacena en mi servidor ni se transmite a terceros, ni se usa
+                        para fines comerciales en modo alguno.</span>
+                    <br class="mt-1">
+                    <span data-i18n="credits_bug">¿Has encontrado algún error? Por favor escríbeme a </span>
+                    <a id="enlace-bug" href="mailto:hola@mparamos.com"
+                        class="text-sky-400 hover:underline">hola@mparamos.com</a>
+                    <span data-i18n="credits_bug2"> para que pueda arreglarlo.</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

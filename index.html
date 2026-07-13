@@ -1,6 +1,6 @@
 <!--
   @file index.html
-  @description Main entry point for the Yag2Dpg landing page. 
+  @description Main entry point for the Yagce landing page. 
   Built with semantic HTML5 and styled via Tailwind CSS utilities.
   @author Miguel Páramos
 -->
@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yag2Dpg - Yet Another Generic 2D Platformer Game</title>
+    <title>Yagce - YAGCE (Yet Another Game Creation Engine)</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -27,17 +27,17 @@
     <script type="module" src="js/app.js"></script>
 </head>
 
-<body
-    class="bg-slate-900 text-slate-200 m-0 p-0 w-full min-w-[320px] flex flex-col min-h-screen overflow-x-hidden overflow-y-auto lg:h-screen lg:overflow-hidden">
+<body class="bg-slate-900 text-slate-200 m-0 p-0 w-full min-w-[320px] flex flex-col h-[100dvh] overflow-hidden">
 
     <!-- Main Content Layout -->
-    <main class="flex-1 flex flex-col lg:flex-row w-full lg:min-h-0">
+    <main class="flex-1 flex flex-col lg:flex-row w-full overflow-y-auto lg:overflow-hidden lg:min-h-0">
 
         <!-- Hero Section: Project Presentation -->
         <section
-            class="flex-1 flex flex-col justify-center items-center p-8 bg-wave-animated min-h-[80vh] lg:min-h-0 lg:overflow-y-auto">
-            <img src="assets/logos/Yag2Dpg-logo.png" alt="Yag2Dpg Logo"
-                class="max-w-full h-auto drop-shadow-[0_0_25px_rgba(14,165,233,0.4)] mb-8 transition-transform hover:scale-105">
+            class="w-full flex-none lg:w-auto lg:flex-1 flex flex-col p-4 sm:p-8 bg-wave-animated min-h-[80dvh] lg:min-h-0 lg:h-full lg:overflow-y-auto">
+            <div class="m-auto flex flex-col items-center w-full max-w-3xl">
+                <img src="assets/logos/Yagce-logo.png" alt="Yagce Logo"
+                    class="max-w-full h-auto max-h-[30vh] lg:max-h-[40vh] object-contain drop-shadow-[0_0_25px_rgba(14,165,233,0.4)] mb-8 transition-transform hover:scale-105">
 
             <h1 class="text-3xl md:text-5xl font-bold text-white mb-4 text-center tracking-tight"
                 data-i18n="hero_title">¡Juego en Construcción!</h1>
@@ -46,14 +46,14 @@
                 proyecto comenzó en Mayo de 2026 como un ejercicio para enseñar a programar a alumnos de TICO en primero
                 de bachillerato. Siendo como soy, el proyecto ha escalado y se está convirtiendo en un videojuego real.
                 De momento solo está disponible una primera alpha del juego muy básica, y una primera versión del editor
-                de niveles. Para su siguiente versión, el proyecto se está migrando desde q5play a Phaser 4, para
+                de niveles. Para su siguiente versión, el proyecto se está migrando desde Phaser 4 a Phaser 4, para
                 aprovechar la potencia de un mejor motor de juegos.</p>
 
-            <div class="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-2xl px-4">
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 md:gap-6 w-full max-w-2xl px-4">
 
-                <a id="btn-enlace-juego" href="game/index.html"
+                <a id="btn-enlace-juego" href="game-tester/index.html"
                     class="w-full md:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xl rounded-lg uppercase transition-all hover:-translate-y-1 hover:shadow-[0_10px_20px_rgba(16,185,129,0.4)] flex items-center justify-center gap-3">
-                    <span class="text-2xl">🎮</span> <span data-i18n="btn_play">Jugar a Yag2Dpg</span>
+                    <span class="text-2xl">🎮</span> <span data-i18n="btn_play">Jugar a Yagce</span>
                 </a>
 
                 <a id="btn-enlace-editor" href="level-editor/index.html"
@@ -61,6 +61,7 @@
                     <span class="text-2xl">🛠️</span> <span data-i18n="btn_editor">Editor de Niveles</span>
                 </a>
 
+            </div>
             </div>
         </section>
 
@@ -83,7 +84,7 @@
 
     <!-- Footer Section: Credits, Licensing, and Language Selection -->
     <footer
-        class="w-full shrink-0 bg-slate-950 border-t border-slate-800 z-20 p-2 sm:px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.6)]">
+        class="w-full shrink-0 bg-slate-950 z-20 p-2 sm:px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.6)]">
         <div class="flex flex-col xl:flex-row justify-between items-center gap-3 w-full">
 
             <div class="flex flex-wrap justify-center xl:justify-start items-center gap-2 sm:gap-3 shrink-0">
@@ -94,7 +95,7 @@
                 </a>
 
                 <div class="text-white font-bold text-center text-[0.9rem] sm:text-sm" data-i18n="credits_title">Miguel
-                    Páramos - Yet another generic 2D platformer game (Yag2Dpg)</div>
+                    Páramos - YAGCE (Yet Another Game Creation Engine)</div>
 
                 <!-- Language Selector Controls -->
                 <div class="flex gap-2 items-center shrink-0" id="langSelector">
@@ -102,23 +103,40 @@
                     <button class="flag-btn flag-en" data-lang="en" title="English / USA"></button>
                     <button class="flag-btn flag-fr" data-lang="fr" title="Français"></button>
                 </div>
+                
+                <button onclick="
+                    let contents = document.querySelectorAll('.footer-accordion-content');
+                    let isClosed = contents[0].classList.contains('max-h-0');
+                    contents.forEach(el => {
+                        if(isClosed) {
+                            el.classList.remove('max-h-0');
+                            el.classList.add('max-h-[500px]', 'mt-2', 'pt-2');
+                        } else {
+                            el.classList.add('max-h-0');
+                            el.classList.remove('max-h-[500px]', 'mt-2', 'pt-2');
+                        }
+                    });
+                    this.innerHTML = isClosed ? '<span class=\'text-[10px]\'>▼</span>' : '<span class=\'text-[10px]\'>▲</span>';
+                " class="xl:hidden ml-1 px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs border border-slate-700 hover:bg-slate-700 focus:outline-none outline-none transition-colors flex items-center justify-center">
+                    <span class="text-[10px]">▲</span>
+                </button>
             </div>
 
             <!-- Licensing and Source Code Links -->
             <div
-                class="credits-license w-full xl:w-auto text-slate-400 text-[0.6rem] sm:text-xs text-center xl:text-right xl:flex-1">
+                class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full xl:w-auto text-slate-400 text-[0.6rem] sm:text-xs text-center xl:text-right xl:flex-1">
                 © <span id="currentYear"></span> Miguel Páramos. <span data-i18n="credits_license1">Distribuido bajo
                     licencia</span> <a href="https://www.gnu.org/licenses/gpl-3.0.html" rel="noopener noreferrer"
                     target="_blank">GNU GPL v3</a>. <span data-i18n="credits_license2">Por favor, dar atribución con
                     enlace a</span> <a href="https://mparamos.com" class="text-sky-400 hover:underline"
                     rel="noopener noreferrer" target="_blank">mparamos.com</a>.<br>
-                <span data-i18n="credits_license3">Creado con</span> <a href="https://q5play.org/"
-                    class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">q5play</a> (MIT), <a
+                <span data-i18n="credits_license3">Creado con</span> <a href="https://phaser.io/"
+                    class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">Phaser 4</a> (MIT), <a
                     href="https://stuk.github.io/jszip/" class="text-sky-400 hover:underline" rel="noopener noreferrer"
                     target="_blank">JSZip</a> (MIT)<span data-i18n="credits_and"> y </span><a
                     href="https://tailwindcss.com/" class="text-sky-400 hover:underline" rel="noopener noreferrer"
                     target="_blank">Tailwind</a> (MIT).
-                <a href="https://github.com/MParamos/Yag2Dpg" rel="noopener noreferrer" target="_blank"
+                <a href="https://github.com/MParamos/Yagce" rel="noopener noreferrer" target="_blank"
                     class="text-emerald-400 hover:text-emerald-300 hover:underline font-bold transition-colors mt-1 inline-block"
                     data-i18n="credits_source">Descarga el código fuente aquí</a>.
             </div>
@@ -126,7 +144,7 @@
 
         <!-- Privacy and Bug Reporting -->
         <div
-            class="credits-license w-full mt-2 pt-2 border-t border-slate-800 text-[0.65rem] text-slate-500 text-center leading-tight">
+            class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full text-[0.65rem] text-slate-500 text-center leading-tight">
             <span data-i18n="credits_privacy">Este sitio solo usa cookies esenciales, toda tu información se almacena de
                 forma local, y no se almacena en mi servidor ni se transmite a terceros, ni se usa para fines
                 comerciales en modo alguno.</span>

@@ -1,89 +1,179 @@
 <!--
   @file index.html
-  @description Yag2Dpg level editor landing and editor page.
-  Built with semantic HTML5 and styled via Tailwind CSS utilities. Uses q5play and JSZip.
+  @description Yagce level editor landing and editor page.
+  Built with semantic HTML5 and styled via Tailwind CSS utilities. Uses Phaser 4 and JSZip.
   @author Miguel Páramos
 -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MParamos | Yag2Dpg Level Editor</title>
+  <title>MParamos | Yagce Level Editor</title>
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-  
+
   <!-- Core Stylesheets -->
-  <link rel="stylesheet" href="https://www.mparamos.com/mr/css/styles.css"> 
+  <link rel="stylesheet" href="https://www.mparamos.com/mr/css/styles.css">
   <link rel="stylesheet" href="styles/style.css">
-    <!--<script src="https://cdn.tailwindcss.com"></script>-->
+  <!--<script src="https://cdn.tailwindcss.com"></script>-->
   <link rel="stylesheet" href="styles/tailwind-output.css">
 
   <!-- External Libraries -->
   <script src="js/libraries/jszip.min.js"></script>
-  
+
   <!-- Application Entry Point -->
   <script type="module" src="js/main.js" defer></script>
 </head>
 
 <!-- 
   @author Miguel Páramos
-  @description Main DOM structure for the Yag2Dpg Level Editor. 
+  @description Main DOM structure for the Yagce Level Editor. 
   Divided into two primary screens: Metadata Configuration (form-screen) and the Canvas Editor (editor-screen).
 -->
-<body class="bg-slate-900 overflow-hidden text-slate-200 m-0 p-0 w-screen min-w-[320px] h-screen flex flex-col">
+
+<body class="bg-slate-900 overflow-hidden text-slate-200 m-0 p-0 w-screen min-w-[320px] h-[100dvh] flex flex-col">
 
   <!-- ==========================================
        SCREEN 1: LEVEL METADATA CONFIGURATION 
        ========================================== -->
-  <section id="form-screen" class="flex-1 min-h-0 overflow-y-auto w-full p-4 sm:p-8 flex justify-center bg-wave-animated">
-      
-      <div class="flex flex-col gap-4 w-full max-w-[900px] bg-gray-900 border-2 border-sky-500 p-6 sm:p-8 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] m-auto">
-          
-        <!-- Header / Logo -->
-        <div class="flex flex-col sm:flex-row items-center gap-6 w-full mb-2 bg-slate-800/50 p-4 rounded-lg border border-slate-700">
-          <div class="shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center">
-              <img src="assets/logos/Yag2Dpg-level-editor-logo.png" alt="Logo Yag2Dpg" class="w-full h-full object-contain drop-shadow-lg" />
-          </div>
-          <div class="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
-              <h2 data-i18n="form_title" class="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-md">🛠️ Editor de niveles para Yag2Dpg</h2>
-              <p data-i18n="form_subtitle" class="text-slate-400 text-sm sm:text-base">Configura los metadatos y dimensiones de tu mundo</p>
-          </div>
+  <section id="form-screen"
+    class="flex-1 min-h-0 overflow-y-auto w-full p-4 sm:p-8 flex justify-center bg-wave-animated">
+
+    <div
+      class="flex flex-col gap-4 w-full max-w-[900px] bg-gray-900 border-2 border-sky-500 p-6 sm:p-8 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] m-auto">
+
+      <!-- Header / Logo -->
+      <div
+        class="flex flex-col sm:flex-row items-center gap-6 w-full mb-2 bg-slate-800/50 p-4 rounded-lg border border-slate-700">
+        <div class="shrink-0 w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] flex items-center justify-center">
+          <img src="assets/logos/YAGCE-LevelEditor-logo.png" alt="Logo Yagce"
+            class="w-full h-full object-contain drop-shadow-lg" />
         </div>
-        
-        <!-- Author Data -->
+        <div class="flex flex-col items-center sm:items-start text-center sm:text-left flex-1">
+          <h2 data-i18n="form_title" class="text-2xl sm:text-3xl font-bold text-white mb-2 drop-shadow-md">🛠️ Editor de
+            niveles para YAGCE</h2>
+          <p data-i18n="form_subtitle" class="text-slate-400 text-sm sm:text-base">Configura los metadatos y dimensiones
+            de tu mundo</p>
+        </div>
+      </div>
+
+      <!-- Author Data -->
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left"><span data-i18n="lbl_author">Autor del
+            nivel:</span><span class="text-red-500">*</span></label>
+        <input type="text" id="in-level-author" data-i18n="ph_author" placeholder="Tu nombre o alias"
+          class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left sm:mt-2">
+          <span data-i18n="lbl_email">Email del autor:</span><span class="text-red-500">*</span>
+        </label>
+        <div class="flex-1 w-full flex flex-col">
+          <input type="email" id="in-author-email" data-i18n="ph_email" placeholder="tu@email.com"
+            class="w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+          <p data-i18n="lbl_email_disclaimer" class="mt-1 text-[0.70rem] text-slate-500 leading-tight">
+            Este email solo se incluirá en el archivo ZIP del nivel generado para que puedan contactarte en caso de
+            incidencias con los derechos de autor. No se enviará a ningún servidor, ni se usará para envíos comerciales,
+            ni se compartirá con terceros. Todo el empaquetado se realiza localmente en tu navegador.
+          </p>
+        </div>
+      </div>
+
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_url">URL del autor:</label>
+        <input type="url" id="in-level-author-url" data-i18n="ph_url" placeholder="https://tuweb.com (Opcional)"
+          class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+      </div>
+
+      <!-- Level License Selection -->
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left"><span data-i18n="lbl_lic_level">Licencia del
+            nivel:</span><span class="text-red-500">*</span></label>
+        <select id="sel-level-license"
+          class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+          <option value="" data-i18n="lic_sel">-- Selecciona una licencia --</option>
+          <option value="copyright" data-i18n="lic_copy">Todos los derechos reservados (Copyright)</option>
+          <option value="cc0" data-i18n="lic_cc0">Dominio Público / CC0</option>
+          <option value="cc-by" data-i18n="lic_ccby">CC BY (Atribución)</option>
+          <option value="cc-by-sa" data-i18n="lic_ccbysa">CC BY-SA (Atribución - Compartir Igual)</option>
+          <option value="cc-by-nc" data-i18n="lic_ccbync">CC BY-NC (Atribución - No Comercial)</option>
+          <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir Igual)
+          </option>
+          <option value="cc-by-nd" data-i18n="lic_ccbynd">CC BY-ND (Atribución - Sin Derivadas)</option>
+          <option value="mit" data-i18n="lic_mit">Licencia MIT (Software/Código libre)</option>
+          <option value="gpl" data-i18n="lic_gpl">Licencia GNU GPL (Software libre)</option>
+          <option value="apache" data-i18n="lic_apache">Licencia Apache 2.0</option>
+          <option value="other" data-i18n="lic_other">Otra licencia especial</option>
+        </select>
+      </div>
+
+      <input type="text" id="in-level-license-custom" data-i18n="ph_lic_custom"
+        placeholder="Especificar tipo de licencia especial"
+        class="w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500 mt-1 hidden">
+
+      <hr class="border-t border-slate-700 my-2">
+
+      <!-- Grid Dimensions -->
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_width">Ancho (px):</label>
+        <input type="range" id="in-width" min="100" max="2000" step="50" value="1200"
+          class="flex-1 w-full accent-sky-500 cursor-pointer">
+        <span id="val-width" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">1200 px</span>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_height">Alto (px):</label>
+        <input type="range" id="in-height" min="100" max="2000" step="50" value="800"
+          class="flex-1 w-full accent-sky-500 cursor-pointer">
+        <span id="val-height" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">800 px</span>
+      </div>
+      <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+        <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_tile">Tamaño Tile:</label>
+        <input type="range" id="in-tile" value="0" class="flex-1 w-full accent-sky-500 cursor-pointer">
+        <span id="val-tile" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">40 px
+          (30x20)</span>
+      </div>
+
+      <hr class="border-t border-slate-700 my-2">
+
+      <!-- Background Image Configuration -->
+      <div class="w-full text-left">
+        <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-400 leading-tight">
+          <input type="checkbox" id="check-background" class="mt-1 accent-sky-500">
+          <span data-i18n="lbl_check_bg">Quiero usar una imagen de fondo en mi nivel, y certifico que tengo permisos
+            para usarla, y la incluyo en mi nivel bajo mi responsabilidad como creador.</span>
+        </label>
+      </div>
+
+      <div id="image-panel" class="flex-col gap-3 w-full bg-slate-800 p-4 rounded-lg border border-slate-700 hidden">
         <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left"><span data-i18n="lbl_author">Autor del nivel:</span><span class="text-red-500">*</span></label>
-          <input type="text" id="in-level-author" data-i18n="ph_author" placeholder="Tu nombre o alias" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"
+            data-i18n="lbl_img_file">Archivo de imagen:</label>
+          <div class="w-full flex items-center gap-3">
+            <label for="in-image-file"
+              class="cursor-pointer px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-md transition-colors hover:bg-sky-600 whitespace-nowrap">
+              Seleccionar imagen
+            </label>
+            <input type="file" id="in-image-file" accept="image/png, image/jpeg, image/webp, image/gif, image/svg+xml"
+              class="hidden">
+            <span id="txt-in-image-file" class="text-slate-400 text-sm truncate w-full">Sin archivo</span>
+          </div>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-between sm:items-start gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left sm:mt-2">
-              <span data-i18n="lbl_email">Email del autor:</span><span class="text-red-500">*</span>
-          </label>
-          <div class="flex-1 w-full flex flex-col">
-              <input type="email" id="in-author-email" data-i18n="ph_email" placeholder="tu@email.com" class="w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-              <p data-i18n="lbl_email_disclaimer" class="mt-1 text-[0.70rem] text-slate-500 leading-tight">
-                  Este email solo se incluirá en el archivo ZIP del nivel generado para que puedan contactarte en caso de incidencias con los derechos de autor. No se enviará a ningún servidor, ni se usará para envíos comerciales, ni se compartirá con terceros. Todo el empaquetado se realiza localmente en tu navegador.
-              </p>
-          </div>
-        </div>
-
-        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_url">URL del autor:</label>
-          <input type="url" id="in-level-author-url" data-i18n="ph_url" placeholder="https://tuweb.com (Opcional)" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-        </div>
-
-        <!-- Level License Selection -->
-        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left"><span data-i18n="lbl_lic_level">Licencia del nivel:</span><span class="text-red-500">*</span></label>
-          <select id="sel-level-license" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+              data-i18n="lbl_lic_img">Licencia de la imagen:</span> <span class="text-red-500">*</span></label>
+          <select id="sel-image-license"
+            class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
             <option value="" data-i18n="lic_sel">-- Selecciona una licencia --</option>
             <option value="copyright" data-i18n="lic_copy">Todos los derechos reservados (Copyright)</option>
             <option value="cc0" data-i18n="lic_cc0">Dominio Público / CC0</option>
             <option value="cc-by" data-i18n="lic_ccby">CC BY (Atribución)</option>
             <option value="cc-by-sa" data-i18n="lic_ccbysa">CC BY-SA (Atribución - Compartir Igual)</option>
             <option value="cc-by-nc" data-i18n="lic_ccbync">CC BY-NC (Atribución - No Comercial)</option>
-            <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir Igual)</option>
+            <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir
+              Igual)</option>
             <option value="cc-by-nd" data-i18n="lic_ccbynd">CC BY-ND (Atribución - Sin Derivadas)</option>
             <option value="mit" data-i18n="lic_mit">Licencia MIT (Software/Código libre)</option>
             <option value="gpl" data-i18n="lic_gpl">Licencia GNU GPL (Software libre)</option>
@@ -91,302 +181,356 @@
             <option value="other" data-i18n="lic_other">Otra licencia especial</option>
           </select>
         </div>
-        
-        <input type="text" id="in-level-license-custom" data-i18n="ph_lic_custom" placeholder="Especificar tipo de licencia especial" class="w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500 mt-1 hidden" >
 
-        <hr class="border-t border-slate-700 my-2">
-        
-        <!-- Grid Dimensions -->
-        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_width">Ancho (px):</label>
-          <input type="range" id="in-width" min="100" max="2000" step="50" value="1200" class="flex-1 w-full accent-sky-500 cursor-pointer">
-          <span id="val-width" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">1200 px</span>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_height">Alto (px):</label>
-          <input type="range" id="in-height" min="100" max="2000" step="50" value="800" class="flex-1 w-full accent-sky-500 cursor-pointer">
-          <span id="val-height" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">800 px</span>
-        </div>
-        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-          <label class="font-bold text-[0.95rem] sm:min-w-[180px] text-left" data-i18n="lbl_tile">Tamaño Tile:</label>
-          <input type="range" id="in-tile" value="0" class="flex-1 w-full accent-sky-500 cursor-pointer">
-          <span id="val-tile" class="font-mono text-sky-500 font-bold text-lg sm:min-w-[140px] text-left">40 px (30x20)</span>
-        </div>
-        
-        <hr class="border-t border-slate-700 my-2">
-        
-        <!-- Background Image Configuration -->
-        <div class="w-full text-left">
-          <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-400 leading-tight">
-            <input type="checkbox" id="check-background" class="mt-1 accent-sky-500">
-            <span data-i18n="lbl_check_bg">Quiero usar una imagen de fondo en mi nivel, y certifico que tengo permisos para usarla, y la incluyo en mi nivel bajo mi responsabilidad como creador.</span>
-          </label>
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1 hidden"
+          id="group-custom-license">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+              data-i18n="lbl_lic_special">Licencia especial:</span> <span class="text-red-500">*</span></label>
+          <input type="text" id="in-custom-license" data-i18n="ph_lic_custom" placeholder="Especificar tipo de licencia"
+            class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
         </div>
 
-        <div id="image-panel" class="flex-col gap-3 w-full bg-slate-800 p-4 rounded-lg border border-slate-700 hidden">
+        <div id="credits-panel" class="flex-col gap-3 mt-1 hidden">
           <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200" data-i18n="lbl_img_file">Archivo de imagen:</label>
-            <div class="w-full flex items-center gap-3">
-                <label for="in-image-file" class="cursor-pointer px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-md transition-colors hover:bg-sky-600 whitespace-nowrap">
-                  Seleccionar imagen
-                </label>
-                <input type="file" id="in-image-file" accept="image/png, image/jpeg, image/webp, image/gif, image/svg+xml" class="hidden">
-                <span id="txt-in-image-file" class="text-slate-400 text-sm truncate w-full">Sin archivo</span>
-            </div>
-          </div>
-          
-          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_lic_img">Licencia de la imagen:</span> <span class="text-red-500">*</span></label>
-            <select id="sel-image-license" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-              <option value="" data-i18n="lic_sel">-- Selecciona una licencia --</option>
-              <option value="copyright" data-i18n="lic_copy">Todos los derechos reservados (Copyright)</option>
-              <option value="cc0" data-i18n="lic_cc0">Dominio Público / CC0</option>
-              <option value="cc-by" data-i18n="lic_ccby">CC BY (Atribución)</option>
-              <option value="cc-by-sa" data-i18n="lic_ccbysa">CC BY-SA (Atribución - Compartir Igual)</option>
-              <option value="cc-by-nc" data-i18n="lic_ccbync">CC BY-NC (Atribución - No Comercial)</option>
-              <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir Igual)</option>
-              <option value="cc-by-nd" data-i18n="lic_ccbynd">CC BY-ND (Atribución - Sin Derivadas)</option>
-              <option value="mit" data-i18n="lic_mit">Licencia MIT (Software/Código libre)</option>
-              <option value="gpl" data-i18n="lic_gpl">Licencia GNU GPL (Software libre)</option>
-              <option value="apache" data-i18n="lic_apache">Licencia Apache 2.0</option>
-              <option value="other" data-i18n="lic_other">Otra licencia especial</option>
-            </select>
-          </div>
-
-          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1 hidden" id="group-custom-license">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_lic_special">Licencia especial:</span> <span class="text-red-500">*</span></label>
-            <input type="text" id="in-custom-license" data-i18n="ph_lic_custom" placeholder="Especificar tipo de licencia" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-          </div>
-
-          <div id="credits-panel" class="flex-col gap-3 mt-1 hidden">
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-              <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_author_img">Autor de la imagen:</span> <span class="text-red-500">*</span></label>
-              <input type="text" id="in-image-author" data-i18n="ph_author_img" placeholder="Nombre del autor de la imagen" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-            </div>
-            
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-              <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_url_orig">URL original:</span> <span class="text-red-500">*</span></label>
-              <input type="url" id="in-image-url" data-i18n="ph_url_orig" placeholder="URL original de la imagen" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-            </div>
-
-            <div class="w-full mt-1 hidden" id="group-check-copyright">
-              <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-200 leading-tight">
-                <input type="checkbox" id="check-copyright-auth" class="mt-1 accent-sky-500">
-                <span data-i18n="lbl_cert_img">Certifico y me responsabilizo de que tengo permiso del autor para usar esta imagen para este editor.</span> <span class="text-red-500">*</span>
-              </label>
-            </div>
-          </div>
-        </div>
-
-        <!-- Background Music Configuration -->
-        <div class="w-full text-left mt-2">
-          <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-400 leading-tight">
-            <input type="checkbox" id="check-music" class="mt-1 accent-sky-500">
-            <span data-i18n="lbl_check_music">Quiero usar una música de fondo en mi nivel, y certifico que tengo permisos para usarla, y la incluyo bajo mi responsabilidad como creador.</span>
-          </label>
-        </div>
-
-        <div id="music-panel" class="flex-col gap-3 w-full bg-slate-800 p-4 rounded-lg border border-slate-700 hidden" >
-          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200" data-i18n="lbl_music_file">Archivo de música:</label>
-            <div class="flex-1 w-full">
-              <div class="w-full flex items-center gap-3">
-                  <label for="in-music-file" class="cursor-pointer px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-md transition-colors hover:bg-sky-600 whitespace-nowrap">
-                      Seleccionar música
-                  </label>
-                  <input type="file" id="in-music-file" accept="audio/mp3, audio/mpeg, audio/wav, audio/ogg, audio/x-m4a" class="hidden">
-                  <span id="txt-in-music-file" class="text-slate-400 text-sm truncate w-full">Sin archivo</span>
-              </div>
-              <p data-i18n="lbl_music_format" class="text-left text-slate-400 text-xs mt-1">Formatos soportados: .mp3, .wav, .ogg, .m4a</p>
-            </div>
+            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+                data-i18n="lbl_author_img">Autor de la imagen:</span> <span class="text-red-500">*</span></label>
+            <input type="text" id="in-image-author" data-i18n="ph_author_img"
+              placeholder="Nombre del autor de la imagen"
+              class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
           </div>
 
           <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_music_title">Título de la canción:</span> <span class="text-red-500">*</span></label>
-            <input type="text" id="in-music-title" data-i18n="ph_music_title" placeholder="Nombre del tema o pista de audio" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-          </div>
-          
-          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1">
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_lic_music">Licencia de la música:</span> <span class="text-red-500">*</span></label>
-            <select id="sel-music-license" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-              <option value="" data-i18n="lic_sel">-- Selecciona una licencia --</option>
-              <option value="copyright" data-i18n="lic_copy">Todos los derechos reservados (Copyright)</option>
-              <option value="cc0" data-i18n="lic_cc0">Dominio Público / CC0</option>
-              <option value="cc-by" data-i18n="lic_ccby">CC BY (Atribución)</option>
-              <option value="cc-by-sa" data-i18n="lic_ccbysa">CC BY-SA (Atribución - Compartir Igual)</option>
-              <option value="cc-by-nc" data-i18n="lic_ccbync">CC BY-NC (Atribución - No Comercial)</option>
-              <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir Igual)</option>
-              <option value="cc-by-nd" data-i18n="lic_ccbynd">CC BY-ND (Atribución - Sin Derivadas)</option>
-              <option value="mit" data-i18n="lic_mit">Licencia MIT (Software/Libre)</option>
-              <option value="gpl" data-i18n="lic_gpl">Licencia GNU GPL</option>
-              <option value="apache" data-i18n="lic_apache">Licencia Apache 2.0</option>
-              <option value="other" data-i18n="lic_other">Otra licencia especial</option>
-            </select>
+            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+                data-i18n="lbl_url_orig">URL original:</span> <span class="text-red-500">*</span></label>
+            <input type="url" id="in-image-url" data-i18n="ph_url_orig" placeholder="URL original de la imagen"
+              class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
           </div>
 
-          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1 hidden" id="group-custom-music-license" >
-            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_lic_special">Licencia especial:</span> <span class="text-red-500">*</span></label>
-            <input type="text" id="in-custom-music-license" data-i18n="ph_lic_custom" placeholder="Especificar tipo de licencia" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-          </div>
-
-          <div id="music-credits-panel" class="flex-col gap-3 mt-1 hidden" >
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-              <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_author_music">Autor de la música:</span> <span class="text-red-500">*</span></label>
-              <input type="text" id="in-music-author" data-i18n="ph_author_music" placeholder="Nombre del compositor o artista" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-            </div>
-            
-            <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
-              <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span data-i18n="lbl_url_orig">URL original:</span> <span class="text-red-500">*</span></label>
-              <input type="url" id="in-music-url" data-i18n="ph_url_music" placeholder="Enlace original (SoundCloud, Bandcamp, etc.)" class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
-            </div>
-
-            <div class="w-full mt-1 hidden" id="group-check-music-copyright">
-              <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-200 leading-tight">
-                <input type="checkbox" id="check-music-copyright-auth" class="mt-1 accent-sky-500">
-                <span data-i18n="lbl_cert_music">Certifico y me responsabilizo de que tengo permiso del autor para usar esta música para este editor.</span> <span class="text-red-500">*</span>
-              </label>
-            </div>
+          <div class="w-full mt-1 hidden" id="group-check-copyright">
+            <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-200 leading-tight">
+              <input type="checkbox" id="check-copyright-auth" class="mt-1 accent-sky-500">
+              <span data-i18n="lbl_cert_img">Certifico y me responsabilizo de que tengo permiso del autor para usar esta
+                imagen para este editor.</span> <span class="text-red-500">*</span>
+            </label>
           </div>
         </div>
-
-        <button id="btn-create-level" class="mt-6 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg rounded-md uppercase transition-transform hover:scale-105" data-i18n="btn_create">Crear Nivel</button>
       </div>
+
+      <!-- Background Music Configuration -->
+      <div class="w-full text-left mt-2">
+        <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-400 leading-tight">
+          <input type="checkbox" id="check-music" class="mt-1 accent-sky-500">
+          <span data-i18n="lbl_check_music">Quiero usar una música de fondo en mi nivel, y certifico que tengo permisos
+            para usarla, y la incluyo bajo mi responsabilidad como creador.</span>
+        </label>
+      </div>
+
+      <div id="music-panel" class="flex-col gap-3 w-full bg-slate-800 p-4 rounded-lg border border-slate-700 hidden">
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"
+            data-i18n="lbl_music_file">Archivo de música:</label>
+          <div class="flex-1 w-full">
+            <div class="w-full flex items-center gap-3">
+              <label for="in-music-file"
+                class="cursor-pointer px-4 py-2 bg-sky-500 text-white text-sm font-bold rounded-md transition-colors hover:bg-sky-600 whitespace-nowrap">
+                Seleccionar música
+              </label>
+              <input type="file" id="in-music-file" accept="audio/mp3, audio/mpeg, audio/wav, audio/ogg, audio/x-m4a"
+                class="hidden">
+              <span id="txt-in-music-file" class="text-slate-400 text-sm truncate w-full">Sin archivo</span>
+            </div>
+            <p data-i18n="lbl_music_format" class="text-left text-slate-400 text-xs mt-1">Formatos soportados: .mp3,
+              .wav, .ogg, .m4a</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+              data-i18n="lbl_music_title">Título de la canción:</span> <span class="text-red-500">*</span></label>
+          <input type="text" id="in-music-title" data-i18n="ph_music_title"
+            placeholder="Nombre del tema o pista de audio"
+            class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+              data-i18n="lbl_lic_music">Licencia de la música:</span> <span class="text-red-500">*</span></label>
+          <select id="sel-music-license"
+            class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+            <option value="" data-i18n="lic_sel">-- Selecciona una licencia --</option>
+            <option value="copyright" data-i18n="lic_copy">Todos los derechos reservados (Copyright)</option>
+            <option value="cc0" data-i18n="lic_cc0">Dominio Público / CC0</option>
+            <option value="cc-by" data-i18n="lic_ccby">CC BY (Atribución)</option>
+            <option value="cc-by-sa" data-i18n="lic_ccbysa">CC BY-SA (Atribución - Compartir Igual)</option>
+            <option value="cc-by-nc" data-i18n="lic_ccbync">CC BY-NC (Atribución - No Comercial)</option>
+            <option value="cc-by-nc-sa" data-i18n="lic_ccbyncsa">CC BY-NC-SA (Atribución - No Comercial - Compartir
+              Igual)</option>
+            <option value="cc-by-nd" data-i18n="lic_ccbynd">CC BY-ND (Atribución - Sin Derivadas)</option>
+            <option value="mit" data-i18n="lic_mit">Licencia MIT (Software/Libre)</option>
+            <option value="gpl" data-i18n="lic_gpl">Licencia GNU GPL</option>
+            <option value="apache" data-i18n="lic_apache">Licencia Apache 2.0</option>
+            <option value="other" data-i18n="lic_other">Otra licencia especial</option>
+          </select>
+        </div>
+
+        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full mt-1 hidden"
+          id="group-custom-music-license">
+          <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+              data-i18n="lbl_lic_special">Licencia especial:</span> <span class="text-red-500">*</span></label>
+          <input type="text" id="in-custom-music-license" data-i18n="ph_lic_custom"
+            placeholder="Especificar tipo de licencia"
+            class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+        </div>
+
+        <div id="music-credits-panel" class="flex-col gap-3 mt-1 hidden">
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+                data-i18n="lbl_author_music">Autor de la música:</span> <span class="text-red-500">*</span></label>
+            <input type="text" id="in-music-author" data-i18n="ph_author_music"
+              placeholder="Nombre del compositor o artista"
+              class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+          </div>
+
+          <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2 w-full">
+            <label class="font-bold text-[0.95rem] sm:min-w-[160px] text-left text-slate-200"><span
+                data-i18n="lbl_url_orig">URL original:</span> <span class="text-red-500">*</span></label>
+            <input type="url" id="in-music-url" data-i18n="ph_url_music"
+              placeholder="Enlace original (SoundCloud, Bandcamp, etc.)"
+              class="flex-1 w-full px-3 py-2 rounded-md bg-slate-900 text-white border border-slate-600 focus:outline-none focus:border-sky-500">
+          </div>
+
+          <div class="w-full mt-1 hidden" id="group-check-music-copyright">
+            <label class="flex items-start gap-2 cursor-pointer text-sm text-slate-200 leading-tight">
+              <input type="checkbox" id="check-music-copyright-auth" class="mt-1 accent-sky-500">
+              <span data-i18n="lbl_cert_music">Certifico y me responsabilizo de que tengo permiso del autor para usar
+                esta música para este editor.</span> <span class="text-red-500">*</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <button id="btn-create-level"
+        class="mt-6 px-6 py-3 bg-sky-500 hover:bg-sky-600 text-white font-bold text-lg rounded-md uppercase transition-transform hover:scale-105"
+        data-i18n="btn_create">Crear Nivel</button>
+    </div>
   </section>
 
   <!-- ==========================================
        SCREEN 2: MAIN LEVEL EDITOR INTERFACE 
        ========================================== -->
   <section id="editor-screen" class="hidden flex-1 min-h-0 w-full flex-col md:flex-row">
-      
+
     <!-- Sidebar / Tool Palette -->
-    <aside id="editor-toolbar" class="w-full md:w-[320px] shrink-0 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 flex flex-col z-10 overflow-y-auto shadow-[5px_0_15px_rgba(0,0,0,0.5)]">
-          
-          <nav class="mobile-tab-nav md:hidden flex bg-slate-900 border-b border-slate-700 text-xs sm:text-sm overflow-x-auto shrink-0">
-              <button class="flex-1 py-3 px-1 sm:px-2 font-bold text-sky-400 border-b-2 border-sky-400 hover:bg-slate-800 tab-btn transition-colors truncate" data-tab="tab-file" data-i18n="tab_archivo">Archivo</button>
-              <button class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate" data-tab="tab-tools" data-i18n="tab_herramientas">Herramientas</button>
-              <button class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate" data-tab="tab-layers" data-i18n="tab_capas">Capa</button>
-              <button class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate" data-tab="tab-colors" data-i18n="tab_colores">Color</button>
-          </nav>
+    <aside id="editor-toolbar"
+      class="w-full md:w-[320px] shrink-0 bg-slate-800 border-b md:border-b-0 md:border-r border-slate-700 flex flex-col z-10 overflow-y-auto shadow-[5px_0_15px_rgba(0,0,0,0.5)]">
 
-          <div class="p-3 sm:p-4 flex flex-col gap-5 sm:gap-6">
+      <nav
+        class="mobile-tab-nav md:hidden flex bg-slate-900 border-b border-slate-700 text-xs sm:text-sm overflow-x-auto shrink-0">
+        <button
+          class="flex-1 py-3 px-1 sm:px-2 font-bold text-sky-400 border-b-2 border-sky-400 hover:bg-slate-800 tab-btn transition-colors truncate"
+          data-tab="tab-file" data-i18n="tab_archivo">Archivo</button>
+        <button
+          class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate"
+          data-tab="tab-tools" data-i18n="tab_herramientas">Herramientas</button>
+        <button
+          class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate"
+          data-tab="tab-layers" data-i18n="tab_capas">Capa</button>
+        <button
+          class="flex-1 py-3 px-1 sm:px-2 font-bold text-slate-300 hover:text-white hover:bg-slate-800 tab-btn transition-colors truncate"
+          data-tab="tab-colors" data-i18n="tab_colores">Color</button>
+      </nav>
 
-              <!-- Tab: File Operations -->
-              <div id="tab-file" class="tab-content active-tab flex-col gap-2">
-                  <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_archivo">ARCHIVO</h3>
-                  <div class="grid grid-cols-2 md:grid-cols-1 gap-1 sm:gap-2">
-                      <button id="btn-reset-map" class="px-1 sm:px-3 py-2 sm:py-3 bg-slate-700 hover:bg-red-600 text-white rounded font-bold text-[10px] sm:text-xs xl:text-sm flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 sm:gap-2 transition-colors overflow-hidden">
-                          <span class="text-sm sm:text-base shrink-0">🗑️</span> <span data-i18n="ui_reset" class="truncate w-full text-center md:text-left">RESETEAR MAPA</span>
-                      </button>
-                      <button id="btn-discard-level" class="px-1 sm:px-3 py-2 sm:py-3 bg-slate-700 hover:bg-amber-600 text-white rounded font-bold text-[10px] sm:text-xs xl:text-sm flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 sm:gap-2 transition-colors overflow-hidden">
-                          <span class="text-sm sm:text-base shrink-0">🔙</span> <span data-i18n="ui_descartar" class="truncate w-full text-center md:text-left">DESCARTAR NIVEL</span>
-                      </button>
-                      <button id="btn-save-zip" class="col-span-2 md:col-span-1 px-2 py-3 sm:py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-bold text-xs sm:text-sm xl:text-base text-center flex items-center justify-center gap-2 transition-all hover:scale-[1.02] overflow-hidden">
-                          <span class="text-base sm:text-lg shrink-0">💾</span> <span data-i18n="ui_guardar" class="truncate w-full">GUARDAR ZIP</span>
-                      </button>
-                  </div>
-              </div>
+      <div class="p-3 sm:p-4 flex flex-col gap-5 sm:gap-6">
 
-              <!-- Tab: Tools -->
-              <div id="tab-tools" class="tab-content flex-col gap-2">
-                  <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_herramientas">HERRAMIENTAS</h3>
-                  <div class="grid grid-cols-2 gap-1 sm:gap-2">
-                      <button class="btn-tool px-1 py-2 sm:py-3 bg-slate-700 text-white rounded font-bold text-[10px] sm:text-xs border-2 border-transparent transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden" data-tool="hand">
-                          <span class="text-sm sm:text-base shrink-0">🖐️</span> <span data-i18n="ui_mover" class="truncate w-full text-center">MOVER</span>
-                      </button>
-                      <button class="btn-tool px-1 py-2 sm:py-3 bg-slate-700 text-white rounded font-bold text-[10px] sm:text-xs border-2 border-transparent transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden" data-tool="0">
-                          <span class="text-sm sm:text-base shrink-0">🧽</span> <span data-i18n="ui_borrar" class="truncate w-full text-center">BORRAR</span>
-                      </button>
-                  </div>
-                <button id="btn-fill-background" class="w-full px-2 py-2 sm:py-3 bg-slate-700 text-slate-400 rounded font-bold text-[10px] sm:text-xs border border-slate-600 transition-colors mt-1 overflow-hidden truncate cursor-not-allowed" data-i18n="ui_relleno">Establecer color actual como fondo</button>
-
-                <!-- History Actions -->
-                <div class="grid grid-cols-2 gap-1 sm:gap-2 mt-1 sm:mt-2">
-                    <button id="btn-undo" class="px-1 py-2 sm:py-3 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold text-[10px] sm:text-xs flex flex-col xl:flex-row items-center justify-center gap-1 transition-colors overflow-hidden">
-                        <span class="text-sm sm:text-base shrink-0">↩️</span> <span data-i18n="ui_deshacer" class="truncate w-full text-center">DESHACER</span>
-                    </button>
-                    <button id="btn-redo" class="px-1 py-2 sm:py-3 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold text-[10px] sm:text-xs flex flex-col xl:flex-row items-center justify-center gap-1 transition-colors overflow-hidden">
-                        <span class="text-sm sm:text-base shrink-0">↪️</span> <span data-i18n="ui_rehacer" class="truncate w-full text-center">REHACER</span>
-                    </button>
-                </div>
-              </div>
-
-              <!-- Tab: Layers & Logic -->
-              <div id="tab-layers" class="tab-content flex-col gap-2">
-                  <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_capas">CAPA</h3>
-                  <div class="grid grid-cols-3 gap-1 sm:gap-2">
-                      <button class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center" data-layer="0" data-i18n="ui_fondo">FONDO</button>
-                      <button class="btn-layer border-sky-500 bg-sky-600 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center" data-layer="1" data-i18n="ui_medio">MEDIO</button>
-                      <button class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center" data-layer="2" data-i18n="ui_frente">FRENTE</button>
-                  </div>
-                  <div class="grid grid-cols-2 gap-1 sm:gap-2 mt-1">
-                      <button class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded font-bold text-[10px] sm:text-xs border-2 transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden" data-layer="spawn">
-                          <span class="text-sm sm:text-base shrink-0">🎬</span> <span data-i18n="ui_salida" class="truncate w-full text-center">SALIDA</span>
-                      </button>
-                      <button class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded font-bold text-[10px] sm:text-xs border-2 transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden" data-layer="goal">
-                          <span class="text-sm sm:text-base shrink-0">🏁</span> <span data-i18n="ui_meta" class="truncate w-full text-center">META</span>
-                      </button>
-                  </div>
-              </div>
-
-              <!-- Tab: Color Palette -->
-              <div id="tab-colors" class="tab-content flex-col gap-2">
-                  <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_colores">COLOR</h3>
-                  <div id="palette-container" class="grid grid-cols-8 gap-1 sm:gap-2 w-full justify-items-center bg-slate-900 p-2 sm:p-3 rounded-lg border border-slate-700">
-                  </div>
-              </div>
-
+        <!-- Tab: File Operations -->
+        <div id="tab-file" class="tab-content active-tab flex-col gap-2">
+          <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_archivo">ARCHIVO</h3>
+          <div class="grid grid-cols-2 md:grid-cols-1 gap-1 sm:gap-2">
+            <button id="btn-reset-map"
+              class="px-1 sm:px-3 py-2 sm:py-3 bg-slate-700 hover:bg-red-600 text-white rounded font-bold text-[10px] sm:text-xs xl:text-sm flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 sm:gap-2 transition-colors overflow-hidden">
+              <span class="text-sm sm:text-base shrink-0">🗑️</span> <span data-i18n="ui_reset"
+                class="truncate w-full text-center md:text-left">RESETEAR MAPA</span>
+            </button>
+            <button id="btn-discard-level"
+              class="px-1 sm:px-3 py-2 sm:py-3 bg-slate-700 hover:bg-amber-600 text-white rounded font-bold text-[10px] sm:text-xs xl:text-sm flex flex-col md:flex-row items-center justify-center md:justify-start gap-1 sm:gap-2 transition-colors overflow-hidden">
+              <span class="text-sm sm:text-base shrink-0">🔙</span> <span data-i18n="ui_descartar"
+                class="truncate w-full text-center md:text-left">DESCARTAR NIVEL</span>
+            </button>
+            <button id="btn-save-zip"
+              class="col-span-2 md:col-span-1 px-2 py-3 sm:py-4 bg-emerald-600 hover:bg-emerald-500 text-white rounded font-bold text-xs sm:text-sm xl:text-base text-center flex items-center justify-center gap-2 transition-all hover:scale-[1.02] overflow-hidden">
+              <span class="text-base sm:text-lg shrink-0">💾</span> <span data-i18n="ui_guardar"
+                class="truncate w-full">GUARDAR ZIP</span>
+            </button>
           </div>
-      </aside>
+        </div>
 
-      <!-- Main Canvas Viewport -->
-      <div id="canvas-wrapper" class="flex-1 w-full h-full relative block m-0 overflow-hidden bg-slate-900"></div>
+        <!-- Tab: Tools -->
+        <div id="tab-tools" class="tab-content flex-col gap-2">
+          <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_herramientas">
+            HERRAMIENTAS</h3>
+          <div class="grid grid-cols-2 gap-1 sm:gap-2">
+            <button
+              class="btn-tool px-1 py-2 sm:py-3 bg-slate-700 text-white rounded font-bold text-[10px] sm:text-xs border-2 border-transparent transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden"
+              data-tool="hand">
+              <span class="text-sm sm:text-base shrink-0">🖐️</span> <span data-i18n="ui_mover"
+                class="truncate w-full text-center">MOVER</span>
+            </button>
+            <button
+              class="btn-tool px-1 py-2 sm:py-3 bg-slate-700 text-white rounded font-bold text-[10px] sm:text-xs border-2 border-transparent transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden"
+              data-tool="0">
+              <span class="text-sm sm:text-base shrink-0">🧽</span> <span data-i18n="ui_borrar"
+                class="truncate w-full text-center">BORRAR</span>
+            </button>
+          </div>
+          <button id="btn-fill-background"
+            class="w-full px-2 py-2 sm:py-3 bg-slate-700 text-slate-400 rounded font-bold text-[10px] sm:text-xs border border-slate-600 transition-colors mt-1 overflow-hidden truncate cursor-not-allowed"
+            data-i18n="ui_relleno">Establecer color actual como fondo</button>
+
+          <!-- History Actions -->
+          <div class="grid grid-cols-2 gap-1 sm:gap-2 mt-1 sm:mt-2">
+            <button id="btn-undo"
+              class="px-1 py-2 sm:py-3 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold text-[10px] sm:text-xs flex flex-col xl:flex-row items-center justify-center gap-1 transition-colors overflow-hidden">
+              <span class="text-sm sm:text-base shrink-0">↩️</span> <span data-i18n="ui_deshacer"
+                class="truncate w-full text-center">DESHACER</span>
+            </button>
+            <button id="btn-redo"
+              class="px-1 py-2 sm:py-3 bg-slate-700 hover:bg-slate-600 text-white rounded font-bold text-[10px] sm:text-xs flex flex-col xl:flex-row items-center justify-center gap-1 transition-colors overflow-hidden">
+              <span class="text-sm sm:text-base shrink-0">↪️</span> <span data-i18n="ui_rehacer"
+                class="truncate w-full text-center">REHACER</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab: Layers & Logic -->
+        <div id="tab-layers" class="tab-content flex-col gap-2">
+          <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_capas">CAPA</h3>
+          <div class="grid grid-cols-3 gap-1 sm:gap-2">
+            <button
+              class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center"
+              data-layer="0" data-i18n="ui_fondo">FONDO</button>
+            <button
+              class="btn-layer border-sky-500 bg-sky-600 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center"
+              data-layer="1" data-i18n="ui_medio">MEDIO</button>
+            <button
+              class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded text-[10px] sm:text-xs font-bold border-2 transition-colors overflow-hidden truncate w-full text-center"
+              data-layer="2" data-i18n="ui_frente">FRENTE</button>
+          </div>
+          <div class="grid grid-cols-2 gap-1 sm:gap-2 mt-1">
+            <button
+              class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded font-bold text-[10px] sm:text-xs border-2 transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden"
+              data-layer="spawn">
+              <span class="text-sm sm:text-base shrink-0">🎬</span> <span data-i18n="ui_salida"
+                class="truncate w-full text-center">SALIDA</span>
+            </button>
+            <button
+              class="btn-layer border-transparent bg-slate-700 px-1 py-2 sm:py-3 text-white rounded font-bold text-[10px] sm:text-xs border-2 transition-colors flex flex-col xl:flex-row items-center justify-center gap-1 overflow-hidden"
+              data-layer="goal">
+              <span class="text-sm sm:text-base shrink-0">🏁</span> <span data-i18n="ui_meta"
+                class="truncate w-full text-center">META</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab: Color Palette -->
+        <div id="tab-colors" class="tab-content flex-col gap-2">
+          <h3 class="hidden md:block text-slate-400 font-bold text-xs mb-1 sm:mb-2" data-i18n="tab_colores">COLOR</h3>
+          <div id="palette-container"
+            class="grid grid-cols-8 gap-1 sm:gap-2 w-full justify-items-center bg-slate-900 p-2 sm:p-3 rounded-lg border border-slate-700">
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Main Canvas Viewport -->
+    <div id="canvas-wrapper" class="flex-1 w-full h-full relative block m-0 overflow-hidden bg-slate-900"></div>
   </section>
 
   <!-- ==========================================
        APPLICATION FOOTER
        ========================================== -->
-  <footer class="w-full shrink-0 bg-slate-950 border-t border-slate-800 z-20 p-2 sm:px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.6)]">
+  <footer
+    class="w-full shrink-0 bg-slate-950 z-20 p-2 sm:px-6 shadow-[0_-5px_20px_rgba(0,0,0,0.6)]">
     <div class="flex flex-col xl:flex-row justify-between items-center gap-3 w-full">
-        
-        <div class=" flex flex-wrap justify-center xl:justify-start items-center gap-2 sm:gap-3 shrink-0">
-            <a href="https://mparamos.com" target="_self" class="shrink-0">
-                <img src="https://www.mparamos.com/img/mparamos%20logo%20vectorial.svg" alt="Logo Miguel Páramos" class="h-4 sm:h-6 w-auto">
-            </a>
-            <div class="text-white font-bold text-center text-[0.9rem] sm:text-sm text-center" data-i18n="credits_title">Miguel Páramos - Editor de niveles para <abbr title="Yet Another Generic 2D Platformer Game" class="underline decoration-dotted cursor-help">Yag2Dpg</abbr></div>
-            <div class="flex gap-2 items-center shrink-0" id="lang-selector">
-                <button class="flag-btn flag-es active" data-lang="es" title="Español"></button>
-                <button class="flag-btn flag-en" data-lang="en" title="English / USA"></button>
-                <button class="flag-btn flag-fr" data-lang="fr" title="Français"></button>
-            </div>
+
+      <div class=" flex flex-wrap justify-center xl:justify-start items-center gap-2 sm:gap-3 shrink-0">
+        <a href="https://mparamos.com" target="_self" class="shrink-0">
+          <img src="https://www.mparamos.com/img/mparamos%20logo%20vectorial.svg" alt="Logo Miguel Páramos"
+            class="h-4 sm:h-6 w-auto">
+        </a>
+        <div class="text-white font-bold text-center text-[0.9rem] sm:text-sm text-center" data-i18n="credits_title">
+          Miguel Páramos - Editor de niveles para <abbr title="YAGCE (Yet Another Game Creation Engine)"
+            class="underline decoration-dotted cursor-help">Yagce</abbr></div>
+        <div class="flex gap-2 items-center shrink-0" id="lang-selector">
+          <button class="flag-btn flag-es active" data-lang="es" title="Español"></button>
+          <button class="flag-btn flag-en" data-lang="en" title="English / USA"></button>
+          <button class="flag-btn flag-fr" data-lang="fr" title="Français"></button>
         </div>
 
-        <div class="credits-license w-full xl:w-auto text-slate-400 text-[0.6rem] sm:text-xs text-center xl:text-right xl:flex-1">
-            © <span id="current-year"></span> Miguel Páramos. <span data-i18n="credits_license1">Distribuido bajo licencia</span> <a href="https://www.gnu.org/licenses/gpl-3.0.html" rel="noopener noreferrer" target="_blank">GNU GPL v3</a>. <span data-i18n="credits_license2">Por favor, dar atribución con enlace a</span> <a href="https://mparamos.com" class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">mparamos.com</a>.<br>
-            <span data-i18n="credits_license3">Creado con</span> <a href="https://q5play.org/" class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">q5play</a> (MIT), <a href="https://stuk.github.io/jszip/" class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">JSZip</a> (MIT)<span data-i18n="credits_and"> y </span><a href="https://tailwindcss.com/" class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">Tailwind</a> (MIT). 
-            <a href="https://github.com/MParamos/Yag2Dpg" rel="noopener noreferrer" target="_blank" class="text-emerald-400 hover:text-emerald-300 hover:underline font-bold transition-colors mt-1 inline-block" data-i18n="credits_source">Descarga el código fuente aquí</a>.
-        </div>
-        
+        <button onclick="
+          let contents = document.querySelectorAll('.footer-accordion-content');
+          let isClosed = contents[0].classList.contains('max-h-0');
+          contents.forEach(el => {
+              if(isClosed) {
+                  el.classList.remove('max-h-0');
+                  el.classList.add('max-h-[500px]', 'mt-2', 'pt-2');
+              } else {
+                  el.classList.add('max-h-0');
+                  el.classList.remove('max-h-[500px]', 'mt-2', 'pt-2');
+              }
+          });
+          this.innerHTML = isClosed ? '<span class=\'text-[10px]\'>▼</span>' : '<span class=\'text-[10px]\'>▲</span>';
+        " class="xl:hidden ml-1 px-3 py-1 bg-slate-800 text-slate-300 rounded text-xs border border-slate-700 hover:bg-slate-700 focus:outline-none outline-none transition-colors flex items-center justify-center">
+          <span class="text-[10px]">▲</span>
+        </button>
+      </div>
+
+      <div
+        class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full xl:w-auto text-slate-400 text-[0.6rem] sm:text-xs text-center xl:text-right xl:flex-1">
+        © <span id="current-year"></span> Miguel Páramos. <span data-i18n="credits_license1">Distribuido bajo
+          licencia</span> <a href="https://www.gnu.org/licenses/gpl-3.0.html" rel="noopener noreferrer"
+          target="_blank">GNU GPL v3</a>. <span data-i18n="credits_license2">Por favor, dar atribución con enlace
+          a</span> <a href="https://mparamos.com" class="text-sky-400 hover:underline" rel="noopener noreferrer"
+          target="_blank">mparamos.com</a>.<br>
+        <span data-i18n="credits_license3">Creado con</span> <a href="https://phaser.io/"
+          class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">Phaser 4</a> (MIT), <a
+          href="https://stuk.github.io/jszip/" class="text-sky-400 hover:underline" rel="noopener noreferrer"
+          target="_blank">JSZip</a> (MIT)<span data-i18n="credits_and"> y </span><a href="https://tailwindcss.com/"
+          class="text-sky-400 hover:underline" rel="noopener noreferrer" target="_blank">Tailwind</a> (MIT).
+        <a href="https://github.com/MParamos/Yagce" rel="noopener noreferrer" target="_blank"
+          class="text-emerald-400 hover:text-emerald-300 hover:underline font-bold transition-colors mt-1 inline-block"
+          data-i18n="credits_source">Descarga el código fuente aquí</a>.
+      </div>
+
     </div>
-    
-    <div class="credits-license w-full mt-2 pt-2 border-t border-slate-800 text-[0.65rem] text-slate-500 text-center leading-tight">
-        <span data-i18n="credits_privacy">Este editor de niveles solo usa cookies esenciales, toda tu información se almacena de forma local, y no se almacena en mi servidor ni se transmite a terceros, ni se usa para fines comerciales en modo alguno.</span>
-        <br class="mt-1">
-        <span data-i18n="credits_bug">¿Has encontrado algún error? Por favor escríbeme a </span>
-        <a id="bug-link" href="mailto:hola@mparamos.com" class="text-sky-400 hover:underline">hola@mparamos.com</a>
-        <span data-i18n="credits_bug2"> para que pueda arreglarlo.</span>
+
+    <div
+      class="footer-accordion-content max-h-0 xl:max-h-[500px] overflow-hidden transition-all duration-300 ease-in-out xl:mt-2 xl:pt-2 credits-license w-full text-[0.65rem] text-slate-500 text-center leading-tight">
+      <span data-i18n="credits_privacy">Este editor de niveles solo usa cookies esenciales, toda tu información se
+        almacena de forma local, y no se almacena en mi servidor ni se transmite a terceros, ni se usa para fines
+        comerciales en modo alguno.</span>
+      <br class="mt-1">
+      <span data-i18n="credits_bug">¿Has encontrado algún error? Por favor escríbeme a </span>
+      <a id="bug-link" href="mailto:hola@mparamos.com" class="text-sky-400 hover:underline">hola@mparamos.com</a>
+      <span data-i18n="credits_bug2"> para que pueda arreglarlo.</span>
     </div>
   </footer>
 
   <!-- ==========================================
        CUSTOM MODAL ALERT 
        ========================================== -->
-  <div id="mr-custom-alert" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] justify-center items-center">
-    <div class="flex flex-col w-[450px] max-w-[90vw] bg-gray-900 border-2 border-red-500 p-8 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] text-center items-center">
+  <div id="mr-custom-alert"
+    class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[9999] justify-center items-center">
+    <div
+      class="flex flex-col w-[450px] max-w-[90vw] bg-gray-900 border-2 border-red-500 p-8 rounded-xl shadow-[0_0_30px_rgba(0,0,0,0.8)] text-center items-center">
       <h3 class="text-red-500 text-2xl font-bold mb-4" data-i18n="alert_title">⚠️ ¡Atención!</h3>
       <p id="mr-alert-text" class="text-white text-lg mb-6"></p>
-      <button id="btn-close-alert" class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-md uppercase transition-all" data-i18n="btn_accept">Aceptar</button>
+      <button id="btn-close-alert"
+        class="px-6 py-2 bg-red-500 hover:bg-red-600 text-white font-bold rounded-md uppercase transition-all"
+        data-i18n="btn_accept">Aceptar</button>
     </div>
   </div>
 
 </body>
+
 </html>

@@ -1,0 +1,120 @@
+{
+  "background": {
+    "type": "gradient_dynamic"
+  },
+  "elements": [
+    {
+      "id": "consoleBack",
+      "type": "image",
+      "asset": "console_upper",
+      "origin": [0.5, 1],
+      "depth": 1
+    },
+    {
+      "id": "logoContainer",
+      "type": "container",
+      "depth": 2,
+      "children": [
+        {
+          "id": "logoGlow",
+          "type": "image",
+          "asset": "logo",
+          "alpha": 0.6,
+          "tintFill": "0x10b981",
+          "offsetX": 2,
+          "offsetY": 4
+        },
+        {
+          "id": "logo",
+          "type": "image",
+          "asset": "logo",
+          "offsetX": 0,
+          "offsetY": 0
+        }
+      ]
+    },
+    {
+      "id": "consoleFront",
+      "type": "image",
+      "asset": "console_lower",
+      "origin": [0.5, 0],
+      "depth": 3
+    },
+    {
+      "id": "introText",
+      "type": "text",
+      "textKey": "menu_press_start",
+      "defaultText": "Haga click o pulse cualquier tecla para comenzar",
+      "style": {
+        "fontFamily": "sans-serif",
+        "color": "#ffffff",
+        "align": "center"
+      },
+      "origin": [0.5, 0.5],
+      "depth": 15
+    },
+    {
+      "id": "menuSizer",
+      "type": "sizer",
+      "orientation": "y",
+      "space": { "item": 15 },
+      "depth": 20,
+      "children": [
+        {
+          "id": "linkText",
+          "type": "text",
+          "text": "mparamos.com",
+          "style": { "fontFamily": "sans-serif", "color": "#0ea5e9", "fontStyle": "bold" },
+          "origin": [0.5, 0.5],
+          "interactive": true,
+          "hoverColor": "#38bdf8",
+          "action": "openUrl",
+          "url": "https://mparamos.com"
+        },
+        {
+          "id": "subtitleText",
+          "type": "text",
+          "textKey": "menu_subtitle",
+          "defaultText": "Un juego de plataformas",
+          "style": { "fontFamily": "sans-serif", "color": "#aadafa" },
+          "origin": [0.5, 0.5],
+          "padding": { "bottom": 15 }
+        },
+        {
+          "id": "buttonsRowSizer",
+          "type": "sizer",
+          "orientation": "x",
+          "space": { "item": 10 },
+          "children": [
+            {
+              "id": "btnLoad",
+              "type": "blueMenuButton",
+              "width": 240,
+              "height": 60,
+              "textKey": "menu_button_load",
+              "defaultText": "Cargar",
+              "action": "triggerFilePicker"
+            },
+            {
+              "id": "btnSettings",
+              "type": "blueMenuButton",
+              "width": 60,
+              "height": 60,
+              "text": "⚙️",
+              "action": "openSettings"
+            }
+          ]
+        },
+        {
+          "id": "btnCredits",
+          "type": "blueMenuButton",
+          "width": 310,
+          "height": 60,
+          "textKey": "menu_button_credits",
+          "defaultText": "Créditos",
+          "action": "openCredits"
+        }
+      ]
+    }
+  ]
+}

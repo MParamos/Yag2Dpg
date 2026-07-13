@@ -1,6 +1,6 @@
 /**
  * @file main.js
- * @description Application entry point for the Yag2Dpg Level Editor.
+ * @description Application entry point for the Yagce Level Editor.
  * Initializes the User Interface, binds core events, and dynamically injects 
  * the q5.js library to ensure proper global execution context.
  * @author Miguel Páramos

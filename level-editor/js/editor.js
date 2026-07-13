@@ -1,6 +1,6 @@
 /**
  * @file editor.js
- * @description Core graphics engine and canvas event handling for the Yag2Dpg Level Editor.
+ * @description Core graphics engine and canvas event handling for the Yagce Level Editor.
  * Integrates with q5.js (a lightweight p5.js alternative) to manage rendering, 
  * grid interactions, zoom/pan camera logic, and painting history (undo/redo).
  * @author Miguel Páramos
