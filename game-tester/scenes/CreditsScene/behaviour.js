@@ -1,27 +1,23 @@
+import { RedMenuButton, BaseScene } from '../../../engine/src/index.js';
 /**
  * @file CreditsScene.js
  * @description Credits screen scene for Phaser. Displays developer, AI, music, and SFX attribution.
  * Fully encapsulated and OOP compliant using Phaser GameObjects and RexUI Sizers.
  */
-class CreditsScene extends BaseScene {
+export class CreditsScene extends BaseScene {
     constructor() {
         super({ key: 'CreditsScene' });
     }
 
     preload() {
-        this.load.image('miguel_profile', 'assets/characters/official/miguel/profilePicture.webp');
-        this.load.image('garnata_profile', 'assets/characters/official/garnata/profilePicture.webp');
-        this.load.audio('credits_music', "assets/music/official/After a hard day's work.mp3");
+        this.load.image('miguel_profile', 'assets/characters/miguel/profilePicture.webp');
+        this.load.image('garnata_profile', 'assets/characters/garnata/profilePicture.webp');
+        this.load.audio('credits_music', "assets/music/After a hard day's work.mp3");
     }
 
     create() {
         super.create();
         if (window.webController) window.webController.setFooterVisibility(true);
-
-        let cx = this.scale.width / 2;
-        let cy = this.scale.height / 2;
-        let isMobile = this.scale.width < 600;
-
         // Dynamic background placeholder (updated in update())
         this.bgRect = this.add.rectangle(0, 0, this.scale.width, this.scale.height).setOrigin(0);
 
@@ -227,3 +223,5 @@ class CreditsScene extends BaseScene {
         }
     }
 }
+
+

@@ -1,10 +1,13 @@
+import { BlueMenuButton } from '../index.js';
+import { BaseScene } from './BaseScene.js';
+import { ConfigManager } from './ConfigManager.js';
 /**
  * @file MenuScene.js
  * @description Base class for data-driven menus. Parses a JSON configuration
  * to automatically build UI elements using Phaser GameObjects and RexUI.
  * Inherits from BaseScene.
  */
-class MenuScene extends BaseScene {
+export class MenuScene extends BaseScene {
     constructor(config) {
         super(config);
         this.uiElements = {};
@@ -181,3 +184,5 @@ class MenuScene extends BaseScene {
         }
     }
 }
+
+

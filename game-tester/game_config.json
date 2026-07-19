@@ -1,0 +1,11 @@
+﻿{
+  "scenes": [
+    "MainMenuScene",
+    "CreditsScene"
+  ],
+  "PlayableLevels": [
+    {
+      "levelPath": "primer_nivel.zip"
+    }
+  ]
+}

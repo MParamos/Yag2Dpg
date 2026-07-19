@@ -3,7 +3,7 @@
  * @description Factory classes for interactive UI buttons using RexUI Label.
  * Encapsulates rendering, state management, and audio feedback, maintaining full RexUI compatibility.
  */
-class MenuButton {
+export class MenuButton {
     
     /**
      * Instantiates a new interactive menu button using RexUI Label.
@@ -124,19 +124,19 @@ class MenuButton {
     }
 }
 
-class BlueMenuButton extends MenuButton {
+export class BlueMenuButton extends MenuButton {
     constructor(scene, x, y, w, h, textStr, actionCallback) {
         super(scene, x, y, w, h, textStr, actionCallback, { base: 0x0ea5e9, hover: 0x38bdf8 });
     }
 }
 
-class RedMenuButton extends MenuButton {
+export class RedMenuButton extends MenuButton {
     constructor(scene, x, y, w, h, textStr, actionCallback) {
         super(scene, x, y, w, h, textStr, actionCallback, { base: 0xef4444, hover: 0xf87171 });
     }
 }
 
-class GreenMenuButton extends MenuButton {
+export class GreenMenuButton extends MenuButton {
     constructor(scene, x, y, w, h, textStr, actionCallback) {
         super(scene, x, y, w, h, textStr, actionCallback, { base: 0x22c55e, hover: 0x4ade80 });
     }

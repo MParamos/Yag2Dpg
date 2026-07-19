@@ -5,7 +5,7 @@
  * Provides Blob URLs for Phaser's Loader to ingest.
  * @author Miguel Páramos
  */
-class LevelData {
+export class LevelData {
     static PALETTE = {
         1: '#8B0000', 2: '#B22222', 3: '#FF0000', 4: '#FF4500', 5: '#FF6347', 6: '#FA8072', 7: '#E9967A', 8: '#BC8F8F',
         9: '#FF8C00', 10: '#FFA500', 11: '#FFD700', 12: '#FFFF00', 13: '#F0E68C', 14: '#EEE8AA', 15: '#BDB76B', 16: '#DAA520',

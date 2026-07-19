@@ -1,10 +1,11 @@
+import { MenuScene, ConfigManager, I18n } from '../../../engine/src/index.js';
 /**
  * @file MainMenuScene.js
  * @description Main menu screen scene for Phaser.
  * Handles UI initialization via MenuScene data-driven builder, dynamic background, settings overlay, and navigation.
- * @author Miguel Páramos
+ * @author Miguel PÃ¡ramos
  */
-class MainMenuScene extends MenuScene {
+export class MainMenuScene extends MenuScene {
     constructor() {
         super({ key: 'MainMenuScene' });
     }
@@ -19,7 +20,7 @@ class MainMenuScene extends MenuScene {
         this.load.audio('menu_music', 'assets/music/official/When I inserted the cartridge.mp3');
         
         // Load the JSON configuration
-        this.load.json('main_menu_config', 'assets/data/main_menu.json');
+        this.load.json('main_menu_config', 'scenes/MainMenuScene/elements.json');
     }
 
     canOpenSettings() {
@@ -104,7 +105,7 @@ class MainMenuScene extends MenuScene {
                     this.sound.play('sfx_start', { volume: ConfigManager.sfxVolume });
                 }
                 
-                // 1) Esperamos a que termine el parpadeo rápido del texto (1000ms)
+                // 1) Esperamos a que termine el parpadeo rÃ¡pido del texto (1000ms)
                 this.time.delayedCall(1000, () => {
                     const iText = this.uiElements['introText'];
                     if (iText) {
@@ -142,7 +143,7 @@ class MainMenuScene extends MenuScene {
                                 this.sound.play('sfx_click', { volume: ConfigManager.sfxVolume });
                             }
                             
-                            // 4) Mostramos el menú por encima
+                            // 4) Mostramos el menÃº por encima
                             const mSizer = this.uiElements['menuSizer'];
                             if (mSizer) {
                                 mSizer.setPosition(this.scale.width / 2, targetLogoY + 40);
@@ -228,7 +229,7 @@ class MainMenuScene extends MenuScene {
             this.uiElements['subtitleText'].setText(I18n.getText('menu_subtitle') || 'Un juego de plataformas');
         }
         if (this.uiElements['btnLoad']) this.uiElements['btnLoad'].setText(I18n.getText('menu_button_load') || 'Cargar nivel de juego');
-        if (this.uiElements['btnCredits']) this.uiElements['btnCredits'].setText(I18n.getText('menu_button_credits') || 'Créditos');
+        if (this.uiElements['btnCredits']) this.uiElements['btnCredits'].setText(I18n.getText('menu_button_credits') || 'CrÃ©ditos');
         
         if (this.uiElements['menuSizer']) this.uiElements['menuSizer'].layout();
     }

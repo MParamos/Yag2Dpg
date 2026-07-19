@@ -1,10 +1,15 @@
+import { MenuButton, ConfirmationModalDialog } from '../index.js';
+import { BaseScene } from '../core/BaseScene.js';
+import { LevelData } from '../core/LevelData.js';
+import { Player } from '../entities/Player.js';
+import { Block } from '../entities/Block.js';
 /**
  * @file GameLevelScene.js
  * @description Core gameplay scene for Phaser. Parses the ZIP level package and renders 
  * the map matrix, player, blocks, and handles game states (pause/quit).
  * @author Miguel Páramos
  */
-class GameLevelScene extends BaseScene {
+export class GameLevelScene extends BaseScene {
     constructor() {
         super({ key: 'GameLevelScene' });
     }
@@ -509,3 +514,5 @@ class GameLevelScene extends BaseScene {
         if (this.modalRestart) this.modalRestart.resize(gameSize);
     }
 }
+
+

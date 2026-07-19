@@ -3,7 +3,7 @@
  * @description Represents the player character. Extends Phaser.Physics.Arcade.Sprite.
  * @author Miguel Páramos
  */
-class Player extends Phaser.Physics.Arcade.Sprite {
+export class Player extends Phaser.Physics.Arcade.Sprite {
     /**
      * Creates the Player instance.
      * @param {Phaser.Scene} scene - The scene this player belongs to.

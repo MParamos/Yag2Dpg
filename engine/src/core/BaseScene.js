@@ -3,7 +3,7 @@
  * @description Base scene for all Yagce scenes to provide universal functionality, 
  * like global hotkeys.
  */
-class BaseScene extends Phaser.Scene {
+export class BaseScene extends Phaser.Scene {
     constructor(config) {
         super(config);
     }

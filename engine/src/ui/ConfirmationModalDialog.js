@@ -1,10 +1,11 @@
+import { RedMenuButton, GreenMenuButton } from './MenuButton.js';
 /**
  * @file ConfirmationModalDialog.js
  * @description Encapsulates a generic ConfirmationModalDialog with a title and Yes/No buttons.
  * Rewritten to use RexUI for automatic layout and scaling.
  * @author Miguel Páramos
  */
-class ConfirmationModalDialog extends Phaser.GameObjects.Container {
+export class ConfirmationModalDialog extends Phaser.GameObjects.Container {
     /**
      * Creates a new ConfirmationModalDialog using RexUI.
      * @param {Phaser.Scene} scene - The scene this modal belongs to.
@@ -122,3 +123,4 @@ class ConfirmationModalDialog extends Phaser.GameObjects.Container {
         this.dialog.layout();
     }
 }
+

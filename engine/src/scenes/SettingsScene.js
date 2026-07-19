@@ -1,10 +1,12 @@
+import { ConfirmationModalDialog, RedMenuButton } from '../../../../engine/src/index.js';
+import { MenuScene } from '../../../../engine/src/index.js';
 /**
  * @file SettingsMenu.js
  * @description Universal settings overlay scene for Volume & SFX.
  * Rewritten to use RexUI for native WebGL rendering and scaling.
  * @author Miguel Páramos
  */
-class SettingsMenu extends Phaser.Scene {
+export class SettingsMenu extends Phaser.Scene {
     constructor() {
         super({ key: 'SettingsScene' });
     }
@@ -231,3 +233,5 @@ class SettingsMenu extends Phaser.Scene {
         this.scene.stop();
     }
 }
+
+

@@ -1,11 +1,12 @@
+﻿import { I18n } from '../../core/I18n.js';
 /**
  * @file WebController.js
  * @description Manages DOM-level interaction, such as responsive canvas 
  * resizing, external UI (like language selectors), and CSS transitions 
  * that are outside the scope of the p5.js canvas.
- * @author Miguel Páramos
+ * @author Miguel PÃ¡ramos
  */
-class WebController {
+export class WebController {
     #isFooterVisible;
 
     constructor() {
@@ -122,7 +123,10 @@ class WebController {
     }
 }
 
-// Inicialización limpia al cargar la página
+// InicializaciÃ³n limpia al cargar la pÃ¡gina
 window.addEventListener('DOMContentLoaded', () => {
     new WebController();
 });
+
+new WebController();
+

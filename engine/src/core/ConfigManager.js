@@ -3,7 +3,7 @@
  * @description Global static configuration manager. Handles persistent 
  * engine state (like audio levels) via localStorage to maintain separation of concerns.
  */
-class ConfigManager {
+export class ConfigManager {
     /**
      * Retrieves the persistent music volume. Defaults to 0.5 (50%).
      * @returns {number}

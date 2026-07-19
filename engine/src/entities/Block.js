@@ -3,7 +3,7 @@
  * @description Represents a solid tile/block in the game world. Extends Phaser.Physics.Arcade.Sprite.
  * @author Miguel Páramos
  */
-class Block extends Phaser.Physics.Arcade.Sprite {
+export class Block extends Phaser.Physics.Arcade.Sprite {
     /**
      * Creates a new Block.
      * @param {Phaser.Scene} scene - The scene this block belongs to.

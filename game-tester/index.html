@@ -7,32 +7,16 @@
     <title>YAGCE (Yet Another Game Creation Engine)</title>
 
     <link rel="shortcut icon" href="assets/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles/tailwind-output.css">
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="../engine/styles/tailwind-output.css">
+    <link rel="stylesheet" href="../engine/styles/style.css">
     <link rel="stylesheet" href="https://www.mparamos.com/mr/css/styles.css">
-    <script src="js/libraries/jszip.min.js"></script>
-    <script src="js/libraries/phaser.min.js"></script>
-    <script src="js/libraries/rexuiplugin.min.js"></script>
+    <script src="../engine/lib/jszip.min.js"></script>
+    <script src="../engine/lib/phaser.min.js"></script>
+    <script src="../engine/lib/rexuiplugin.min.js"></script>
 
-    <script src="js/I18n/i18n.js"></script>
+    <script type="module" src="../engine/src/ui/WebInterface/WebController.js"></script>
 
-    <script src="js/ui/WebInterface/WebController.js"></script>
-    <script src="js/core/ConfigManager.js"></script>
-    <script src="js/core/BaseScene.js"></script>
-    <script src="js/core/MenuScene.js"></script>
-    <script src="js/ui/GameInterface/SettingsMenu.js"></script>
-    <script src="js/ui/GameInterface/MenuButton.js"></script>
-    <script src="js/ui/GameInterface/ConfirmationModalDialog.js"></script>
-
-
-    <script src="js/entities/Block.js"></script>
-    <script src="js/entities/Player.js"></script>
-    <script src="js/core/LevelData.js"></script>
-
-    <script src="js/scenes/GameLevelScene.js"></script>
-    <script src="js/scenes/MainMenuScene.js"></script>
-    <script src="js/scenes/CreditsScene.js"></script>
-    <script src="js/game.js"></script>
+    <script type="module" src="game.js"></script>
 </head>
 
 <body class="relative h-[100dvh] w-full m-0 p-0 overflow-hidden bg-slate-900">
